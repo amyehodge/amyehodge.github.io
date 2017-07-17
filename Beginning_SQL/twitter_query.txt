@@ -1,0 +1,23 @@
+SELECT 
+	DISTINCT T.title, T.tweetid, T.id, T.publishdate, T.link, T.content, T.updatedate, T.authorname, T.authoruri, W.webcite_id, W.long_url,
+	COUNT( T.title ) AS number_hits 
+FROM tweets T 
+LEFT JOIN webcite W ON T.tweetid = W.tweetid 
+WHERE 
+	publishdate BETWEEN "2009-05-01 00:00:00" AND "2009-12-31 23:59:59" 
+	AND
+ 	((LOWER(`title`) LIKE "%swine flu%" OR LOWER(`title`) LIKE "%swineflu%" OR LOWER(`title`) LIKE "%h1n1%")) 
+ 	AND 
+ 	((LOWER(`title`) NOT LIKE "%rt @%" 
+ 	AND 
+ 	LOWER(`title`) NOT LIKE "%rt@%")) 
+ 	AND 
+ 	((LOWER(title) LIKE "%http://%") OR (LOWER(title) LIKE "%https://%")) 
+ GROUP by title 
+ ORDER BY publishdate ASC;
+ 
+ 
+ 
+Query Source: 
+SQL Queries for Automated Tweet Coding & Analysis. SQL syntax for search patterns and keywords used by Infovigil for automated tweet coding and analysis.
+doi:10.1371/journal.pone.0014118.s001
