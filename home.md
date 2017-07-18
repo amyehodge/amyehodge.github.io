@@ -3,7 +3,7 @@
 # Stanford Data Management Services Workshops
 
 
-![Workshop](workshop.jpg" width="600" height="268")
+![Workshop](../workshop.jpg" width="600" height="268")
 
 [Hands-on Intro to SQL (Structured Query Language)](http://amyehodge.github.io/Beginning_SQL/BeginningSQL)
 
