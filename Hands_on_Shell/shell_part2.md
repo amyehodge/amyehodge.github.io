@@ -473,4 +473,6 @@ Pair up with your neighbor and work on these exercies:
 >   with the text "total". The hat character (^) is used
 >   in regular expressions to indicate the start of a line.
 
+[Solution](answers.md#23)
+
 [<< Back to Part 1](https://amyehodge.github.io/Hands_on_Shell/shell_part1)
