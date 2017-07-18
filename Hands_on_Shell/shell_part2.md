@@ -461,6 +461,8 @@ Pair up with your neighbor and work on these exercies:
 > Note: This exercise requires the `-o` flag. See the callout box "Invalid option -- o?"
 > above.
 
+#### [Exercise 22 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-22-answer)
+
 > ### Exercise 23: Counting number of files, part II
 > In the earlier counting exercise in this episode, you tried counting the number
 > of files and directories in the current directory.
@@ -473,6 +475,6 @@ Pair up with your neighbor and work on these exercies:
 >   with the text "total". The hat character (^) is used
 >   in regular expressions to indicate the start of a line.
 
-[Solution](answers.md#23)
+#### [Exercise 23 Solution](answers.md#23)
 
 [<< Back to Part 1](https://amyehodge.github.io/Hands_on_Shell/shell_part1)
