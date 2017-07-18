@@ -1,5 +1,5 @@
-Workshop: Hands-on Introduction to the Shell
-=======================
+# Workshop: Hands-on Introduction to the Shell
+
 This repository contains course content for a Hands-on Shell workshop taught by Data Management Services at Stanford Libraries.
 
 Content for this workshop was largely derived from the Library Carpentry shell lesson material found at https://github.com/data-lessons/library-shell.
