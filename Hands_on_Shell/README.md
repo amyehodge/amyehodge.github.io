@@ -1,4 +1,4 @@
-# Workshop: Hands-on Introduction to the Shell
+Workshop: Hands-on Introduction to the Shell
 
 This repository contains course content for a Hands-on Shell workshop taught by Data Management Services at Stanford Libraries.
 
