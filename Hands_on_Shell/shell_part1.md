@@ -474,4 +474,4 @@ can delete folders with all their content.
 *no* recycling bin from which you can get the files back and no other undo options!**
 For that reason, please be very careful with `rm` and extremely careful with `rm -r`.
 
-[Proceed to Part 2](https://amyehodge.github.io/Hands_on_Shell/shell_part2)  
+[Proceed to Part 2 >>](https://amyehodge.github.io/Hands_on_Shell/shell_part2)  
