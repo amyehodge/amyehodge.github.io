@@ -189,8 +189,8 @@ Use the `man` command to invoke the manual page (documentation) for a shell comm
 >
 > After you've done that, figure out how you can order a list of files based on their last modification date.
 > Try ordering files in different directories.
->
-> [Answer](https://github.com/amyehodge/amyehodge.github.io/blob/master/Hands_on_Shell/answers.md)
+
+#### [Exercise 3 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-3-answer)
 
 
 ## Working with files and folders
@@ -350,14 +350,10 @@ Output:
 ==> 829-0.txt <==
 The Project Gutenberg eBook, Gulliver's Travels, by Jonathan Swift
 
-
 This eBook is for the use of anyone anywhere at no cost and with
 almost no restrictions whatsoever.  You may copy it, give it away or
 re-use it under the terms of the Project Gutenberg License included
 with this eBook or online at www.gutenberg.org
-
-
-
 
 ==> 33504-0.txt <==
 The Project Gutenberg EBook of Opticks, by Isaac Newton
@@ -366,7 +362,6 @@ This eBook is for the use of anyone anywhere at no cost and with
 almost no restrictions whatsoever.  You may copy it, give it away or
 re-use it under the terms of the Project Gutenberg License included
 with this eBook or online at www.gutenberg.org
-
 
 Title: Opticks
        or, a Treatise of the Reflections, Refractions, Inflections,
@@ -423,15 +418,15 @@ Output:
 > Just like the `mv` command, the `cp` command takes two arguments: the old name
 > and the new name. How would you make a copy of the file `gulliver.txt` called
 > `gulliver-backup.txt`? Try it!
->
 
+#### [Exercise 4 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-4-answer)
 
 > ## Exercise 5: Renaming a directory
 >
 > Renaming a directory works in the same way as renaming a file. Try using the
 > `mv` command to rename the `firstdir` directory to `backup`.
 
-
+#### [Exercise 5 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-5-answer)
 
 > ## Exercise 6: Moving a file into a directory
 >
@@ -440,6 +435,7 @@ Output:
 > using the `mv` command to move the file `gulliver-backup.txt` into the
 > `backup` folder.
 
+#### [Exercise 6 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-6-answer)
 
 > ## Exercise 7: Using `history`
 > Use the `history` command to see a list of all the commands
@@ -464,7 +460,8 @@ Output:
 > you specified. You can try the same with some of the other commands you have learned so far.
 >
 > **Why do you think the echo command is actually quite important in the shell environment?**
->
+
+#### [Exercise 8 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-8-answer)
 
 Finally, on to deleting. We won't use it now, but if you do want to delete a file,
 for whatever reason, the command is `rm`, or remove.

@@ -219,6 +219,8 @@ programming languages.
 > We have our `wc -l *.tsv | sort -n | head -n 1` pipeline. What would happen
 > if you piped this into `cat`? Try it!
 
+#### [Exercise 9 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-9-answer)
+
 > ## Exercise 10 : Count, sort and print (faded example)
 >To count the total lines in every `tsv` file, sort the results, and then print the first line of the file we use the following:
 >
@@ -232,22 +234,28 @@ programming languages.
 >__ -w `*.csv` | sort | ____
 >~~
 
+#### [Exercise 10 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-10-answer)
 
 > ### Exercise 11: Counting number of files, part I
 > Let's make a different pipeline. You want to find out how many files and
 > directories there are in the current directory. Try to see if you can pipe
 > the output from `ls` into `wc` to find the answer, or something close to the
 > answer.
->
+
+#### [Exercise 11 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-11-answer)
 
 > ### Exercise 12: Writing to files
 > The `date` command outputs the current date and time. Can you write the
 > current date and time to a new file called `logfile.txt`? Then check
 > the contents of the file.
 
+#### [Exercise 12 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-12-answer)
+
 > ### Exercise 13: Appending to a file
 > While `>` writes to a file, `>>` appends something to a file. Try to append the
 > current date and time to the file `logfile.txt`?
+
+#### [Exercise 13 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-13-answer)
 
 > ### Exercise 14: Counting the number of words
 > Check the manual for the `wc` command (either using `man wc` or `wc --help`)
@@ -256,6 +264,8 @@ programming languages.
 >
 > If you have time, you can also try to sort the results by piping it to `sort`.
 > And/or explore the other flags of `wc`.
+
+#### [Exercise 14 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-14-answer)
 
 ## Mining or searching
 
@@ -422,30 +432,39 @@ Pair up with your neighbor and work on these exercies:
 > a word you choose in all four derived tsv files in this directory.
 > Print your results to the shell.
 
+#### [Exercise 15 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-15-answer)
+
 > ### Exercise 16: Case sensitive search in select files
 > Search for all case sensitive instances of a word you choose in
 > the 'America' and 'Africa' tsv files in this directory.
 > Print your results to the shell.
 
+#### [Exercise 16 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-16-answer)
 
 > ### Exercise 17: Count words (case sensitive)
 > Count all case sensitive instances of a word you choose in
 > the 'America' and 'Africa' tsv files in this directory.
 > Print your results to the shell.
 
+#### [Exercise 17 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-17-answer)
+
 > ### Exercise 18: Count words (case insensitive)
 > Count all case insensitive instances of that word in the 'America' and 'Africa' tsv files
 > in this directory. Print your results to the shell.
+
+#### [Exercise 18 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-18-answer)
 
 > ### Exercise 19: Case insensitive search in select files
 > Search for all case insensitive instances of that
 > word in the 'America' and 'Africa' tsv files in this directory. Print your results to  a file `results/new.tsv`.
 
+#### [Exercise 19 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-19-answer)
 
 > ### Exercise 20: Case insensitive search in select files (whole word)
 > Search for all case insensitive instances of that whole word
 > in the 'America' and 'Africa' tsv files in this directory. Print your results to a file `results/new2.tsv`.
 
+#### [Exercise 20 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-20-answer)
 
 > ### Exercise 21: Searching with regular expressions
 > Use regular expressions to find all ISSN numbers
@@ -453,6 +472,8 @@ Pair up with your neighbor and work on these exercies:
 > in `2014-01_JA.tsv` and print the results to a file `results/issns.tsv`.
 > Note that you might have to use the `-E` flag (or `-P` with some versions
 > of `grep`, e.g. with Git Bash on Windows.).
+
+#### [Exercise 21 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-21-answer)
 
 > ### Exercise 22: Finding unique values
 > If you pipe something to the `uniq` command, it will filter out duplicate lines
