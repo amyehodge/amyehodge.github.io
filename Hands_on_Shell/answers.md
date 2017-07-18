@@ -153,7 +153,7 @@ please share your result on the Etherpad and give yourself a pat on the shoulder
 ~~~
 $ grep -Eo '\d{4}-\d{4}' 2014-01_JA.tsv | uniq | wc -l
 ~~~
-<a name="23"></a> 
+
 ## Exercise 23 Answer
 To find any lines starting with "total", we would use:
 ~~~
