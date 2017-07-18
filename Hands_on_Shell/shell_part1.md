@@ -1,3 +1,5 @@
+[Proceed to Part 2 >>](https://amyehodge.github.io/Hands_on_Shell/shell_part2)  
+
 # Hands-on Introduction to the Shell, Part 1
 
 ## Introduction
