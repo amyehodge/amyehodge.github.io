@@ -1,4 +1,6 @@
-# Adding Junk and more junk Hands-on Introduction to the Shell, Part 2
+[Back to Part 1](https://amyehodge.github.io/Hands_on_Shell/shell_part1)
+
+# Hands-on Introduction to the Shell, Part 2
 
 Now that you know how to navigate the shell, we will move onto
 learning how to count and mine data using a few of the standard shell commands.
@@ -470,3 +472,5 @@ Pair up with your neighbor and work on these exercies:
 > * Hint: You want to exclude any line *starting*
 >   with the text "total". The hat character (^) is used
 >   in regular expressions to indicate the start of a line.
+
+[Back to Part 1](https://amyehodge.github.io/Hands_on_Shell/shell_part1)
