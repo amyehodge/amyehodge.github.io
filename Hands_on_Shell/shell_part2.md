@@ -236,9 +236,9 @@ programming languages.
 #### [Exercise 11 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-11-answer)
 
 > ### Exercise 12: Writing to files
-> The `date` command outputs the current date and time. Can you write the
-> current date and time to a new file called `logfile.txt`? Then check
-> the contents of the file.
+> The `date` command outputs the current date and time. Write the
+> current date and time to a new file called `logfile.txt`. Check
+> the contents of the file. Now write the current date and time to the log file again without overwriting the previous date and time. Check the file again.
 
 #### [Exercise 12 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-12-answer)
 
