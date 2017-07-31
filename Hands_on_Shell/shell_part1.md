@@ -139,11 +139,11 @@ If something had gone wrong, however, the command would have told you. Let's
 see by trying to move into a (hopefully) non-existing directory:
 
 ~~~
-$ cd trouble
+$ cd "big trouble"
 ~~~
 Output:
 ~~~
--bash: cd: trouble: No such file or directory
+-bash: cd: big trouble: No such file or directory
 ~~~
 
 Notice that we surrounded the name by quotation marks. The *arguments* given
