@@ -85,7 +85,7 @@ drwx------+  3 amyhodge  staff   102 Jul 16 11:30 Pictures
 drwxr-xr-x+  5 amyhodge  staff   170 Jul 16 11:30 Public
 ~~~
 
-Let's say you are interested in having the contents of your directory sorted by the most recently accessed. Luckily, there's another flag `-u` that can do this for you.
+Let's say you are interested in having the contents of your directory sorted by the most recently modified. Luckily, there's another flag `-u` that can do this for you.
 
 ~~~
 $ ls -S
