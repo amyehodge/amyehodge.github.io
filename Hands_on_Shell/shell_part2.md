@@ -439,15 +439,6 @@ Pair up with your neighbor and work on these exercies:
 
 #### [Exercise 18 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-19-answer)
 
-> ### Exercise 19: Searching with regular expressions
-> Use regular expressions to find all ISSN numbers
-> (four digits followed by hyphen followed by four digits)
-> in `2014-01_JA.tsv` and print the results to a file `results/issns.tsv`.
-> Note that you might have to use the `-E` flag (or `-P` with some versions
-> of `grep`, e.g. with Git Bash on Windows.).
-
-#### [Exercise 19 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-21-answer)
-
 > ### Exercise 20: Counting number of files, part II
 > In the earlier counting exercise in this episode, you tried counting the number
 > of files and directories in the current directory.
