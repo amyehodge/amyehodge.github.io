@@ -85,29 +85,29 @@ drwx------+  3 amyhodge  staff   102 Jul 16 11:30 Pictures
 drwxr-xr-x+  5 amyhodge  staff   170 Jul 16 11:30 Public
 ~~~
 
-Let's say you are interested in having the contents of your directory sorted by size. Luckily, there's another flag `-S` that can do this for you.
+Let's say you are interested in having the contents of your directory sorted by the most recently accessed. Luckily, there's another flag `-u` that can do this for you.
 
 ~~~
 $ ls -S
 ~~~
 Output:
 ~~~
-Library     Public        Downloads     Music
-Desktop     Documents     Movies        Pictures           
+Desktop     Public        Downloads     Music
+Library     Documents     Movies        Pictures           
 ~~~
 
-This would be better if we could still see the actual sizes, so let's combine the -l and -S flags. When we want to combine two flags,
-we can just run them together. So, by typing `ls -lS` and hitting
+This would be better if we could still see the dates, so let's combine the -l and -u flags. When we want to combine two flags,
+we can just run them together. So, by typing `ls -lu` and hitting
 enter we receive an output in a human-readable format (note: the order of the flags here doesn't matter).
 
 ~~~
-$ ls -lS
+$ ls -lu
 ~~~
 Output:
 ~~~
 total 34
-drwx------@ 46 amyhodge  staff   1.5K Jul 16 11:38 Library
 drwx------+  6 amyhodge  staff   204B Jul 16 11:50 Desktop
+drwx------@ 46 amyhodge  staff   1.5K Jul 16 11:38 Library
 drwxr-xr-x+  5 amyhodge  staff   170B Jul 16 11:30 Public
 drwx------+  3 amyhodge  staff   102B Jul 16 11:30 Documents
 drwx------+  3 amyhodge  staff   102B Jul 16 11:30 Downloads
@@ -170,12 +170,12 @@ us right back to the home directory, right where we started.**
 Being able to navigate the file system is very important for using the shell effectively.
 As we become more comfortable, we can get very quickly to the directory that we want.   
 
-Use the `man` command to invoke the manual page (documentation) for a shell command. For example, `man ls` displays all the flags/options available to you - which saves you remembering them all!
+Use the `man` command to invoke the manual page (documentation) for a shell command. For example, `man ls` displays all the flags/options available to you - which saves you from needing to remember them all!
 
 > ### Exercise 2: Getting help
 >
 > Open the manual page for each command you've learned so far.
-> Use the spacebar to navigate the manual pages, and `q` to quit.
+> Use the spacebar and arrow keys to navigate the manual pages, and `q` to quit.
 >
 > **Note: this command is for Mac and Linux users only.** It does not work directly for Windows users.
 > If you use Windows, you can search for the Shell command on [http://man.he.net/](http://man.he.net/), and view the associated manual page.
