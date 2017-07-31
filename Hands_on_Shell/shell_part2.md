@@ -222,8 +222,8 @@ programming languages.
 #### [Exercise 9 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-9-answer)
 
 > ## Exercise 10 : Count, sort, and print
->Let's say you have a directory containing over 100 `csv` files. How would you count the number of words in each file, sort this list, and then output the 10 files with the most words (Hint: The sort command sorts in ascending order by default)?
->~~
+>Let's say you have a directory containing over 100 `csv` files. How would you count the number of words in each file, sort this list, and then output the 10 files with the most words (Hint: Use `man wc` to check for flags you can use with this command and to verify their behaviors)?
+>
 
 #### [Exercise 10 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-10-answer)
 
@@ -247,16 +247,6 @@ programming languages.
 > current date and time to the file `logfile.txt` without overwriting the previous date and time.
 
 #### [Exercise 13 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-13-answer)
-
-> ### Exercise 14: Counting the number of words
-> Check the manual for the `wc` command (either using `man wc` or `wc --help`)
-> to see if you can find out what flag to use to print out the number of words
-> (but not the number of lines and bytes). Try it with the `.tsv` files.
->
-> If you have time, you can also try to sort the results by piping it to `sort`.
-> And/or explore the other flags of `wc`.
-
-#### [Exercise 14 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-14-answer)
 
 ## Mining or searching
 
@@ -418,64 +408,64 @@ $ grep -iwEo 'fr[ae]nc[eh]' *.tsv
 
 Pair up with your neighbor and work on these exercies:
 
-> ### Exercise 15: Case sensitive search
+> ### Exercise 14: Case sensitive search
 > Search for all case sensitive instances of
 > a word you choose in all four derived tsv files in this directory.
 > Print your results to the shell.
 
-#### [Exercise 15 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-15-answer)
+#### [Exercise 14 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-15-answer)
 
-> ### Exercise 16: Case sensitive search in select files
+> ### Exercise 15: Case sensitive search in select files
 > Search for all case sensitive instances of a word you choose in
 > the 'America' and 'Africa' tsv files in this directory.
 > Print your results to the shell.
 
-#### [Exercise 16 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-16-answer)
+#### [Exercise 15 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-16-answer)
 
-> ### Exercise 17: Count words (case sensitive)
+> ### Exercise 16: Count words (case sensitive)
 > Count all case sensitive instances of a word you choose in
 > the 'America' and 'Africa' tsv files in this directory.
 > Print your results to the shell.
 
-#### [Exercise 17 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-17-answer)
+#### [Exercise 16 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-17-answer)
 
-> ### Exercise 18: Count words (case insensitive)
+> ### Exercise 17: Count words (case insensitive)
 > Count all case insensitive instances of that word in the 'America' and 'Africa' tsv files
 > in this directory. Print your results to the shell.
 
-#### [Exercise 18 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-18-answer)
+#### [Exercise 17 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-18-answer)
 
-> ### Exercise 19: Case insensitive search in select files
+> ### Exercise 18: Case insensitive search in select files
 > Search for all case insensitive instances of that
 > word in the 'America' and 'Africa' tsv files in this directory. Print your results to  a file `results/new.tsv`.
 
-#### [Exercise 19 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-19-answer)
+#### [Exercise 18 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-19-answer)
 
-> ### Exercise 20: Case insensitive search in select files (whole word)
+> ### Exercise 19: Case insensitive search in select files (whole word)
 > Search for all case insensitive instances of that whole word
 > in the 'America' and 'Africa' tsv files in this directory. Print your results to a file `results/new2.tsv`.
 
-#### [Exercise 20 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-20-answer)
+#### [Exercise 19 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-20-answer)
 
-> ### Exercise 21: Searching with regular expressions
+> ### Exercise 20: Searching with regular expressions
 > Use regular expressions to find all ISSN numbers
 > (four digits followed by hyphen followed by four digits)
 > in `2014-01_JA.tsv` and print the results to a file `results/issns.tsv`.
 > Note that you might have to use the `-E` flag (or `-P` with some versions
 > of `grep`, e.g. with Git Bash on Windows.).
 
-#### [Exercise 21 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-21-answer)
+#### [Exercise 20 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-21-answer)
 
-> ### Exercise 22: Finding unique values
+> ### Exercise 21: Finding unique values
 > If you pipe something to the `uniq` command, it will filter out duplicate lines
 > and only return unique ones. Try piping the output from the command in the last exercise
 > to `uniq` and then to `wc -l` to count the number of unique ISSN values.
 > Note: This exercise requires the `-o` flag. See the callout box "Invalid option -- o?"
 > above.
 
-#### [Exercise 22 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-22-answer)
+#### [Exercise 21 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-22-answer)
 
-> ### Exercise 23: Counting number of files, part II
+> ### Exercise 22: Counting number of files, part II
 > In the earlier counting exercise in this episode, you tried counting the number
 > of files and directories in the current directory.
 >
@@ -487,6 +477,6 @@ Pair up with your neighbor and work on these exercies:
 >   with the text "total". The hat character (^) is used
 >   in regular expressions to indicate the start of a line.
 
-#### [Exercise 23 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-22-answer)
+#### [Exercise 22 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-22-answer)
 
 [<< Back to Part 1](https://amyehodge.github.io/Hands_on_Shell/shell_part1)
