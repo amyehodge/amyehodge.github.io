@@ -51,7 +51,7 @@ $ wc -l *.tsv | sort -n | head -n 1 | cat
 ## Exercise 10 Answer
 Here we use the `wc` command with the `-w` (word) flag on all `csv` files, `sort` them and then output the last 10 lines using the `tail` command.
 ~~~
-wc -w *.csv | sort | tail -n 10
+wc -w *.csv | sort -n | tail -n 10
 ~~~
 
 ## Exercise 11 Answer
