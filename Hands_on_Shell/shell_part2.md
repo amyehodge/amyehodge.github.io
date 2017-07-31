@@ -238,13 +238,13 @@ programming languages.
 > ### Exercise 12: Writing to files
 > The `date` command outputs the current date and time. Write the
 > current date and time to a new file called `logfile.txt`. Check
-> the contents of the file. Now write the current date and time to the log file again without overwriting the previous date and time. Check the file again.
+> the contents of the file.
 
 #### [Exercise 12 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-12-answer)
 
 > ### Exercise 13: Appending to a file
 > While `>` writes to a file, `>>` appends something to a file. Try to append the
-> current date and time to the file `logfile.txt`?
+> current date and time to the file `logfile.txt` without overwriting the previous date and time.
 
 #### [Exercise 13 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-13-answer)
 
