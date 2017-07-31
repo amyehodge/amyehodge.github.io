@@ -78,7 +78,6 @@ $ date >> logfile.txt
 $ cat logfile.txt
 ~~~
 
-
 ## Exercise 14 Answer
 ~~~
 $ grep hero *.tsv
