@@ -162,14 +162,9 @@ us right back to the home directory, right where we started.**
 
 > ### Exercise 1: Explore
 >
-> Move around the computer, get used to moving in and out of directories,
-> see how different file types appear in the shell. Be sure to use the `pwd` and
-> `cd` commands, and the different flags for the `ls` command you learned so far.
+> Explore your file directories. The point of this exercise is to get used to moving in and out of directories and to see how different file types appear in the shell. Be sure to use the `pwd` and `cd` commands, and the different flags for the `ls` command you learned so far.
 >
-> If you run Windows,
-> also try typing `explorer .` to open Explorer for the current directory
-> (the single dot means "current directory"). If you're on Mac or Linux,
-> try `open .` instead.
+> If you run Windows, also try typing `explorer .` to open Explorer for the current directory (the single dot means "current directory"). If you're on Mac or Linux, try `open .` instead.
 
 
 Being able to navigate the file system is very important for using the shell effectively.
