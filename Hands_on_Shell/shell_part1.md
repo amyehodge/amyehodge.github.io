@@ -15,7 +15,7 @@ interface. This session will cover a small number of basic commands using Git Ba
 Terminal for Mac OS. These commands constitute building blocks upon which more
 complex commands can be constructed to fit your data or project.
 
-Even if you do not do your own programming or your work currently does not involve the command line, knowing some basics about the shell can be useful.
+Even if you do not do your own programming or your work currently does not involve the command line, knowing some basics about the shell can still be useful.
 
 What you can quickly learn is how to query lots of data for the information you want super fast. Using Bash or any other shell sometimes feels more like programming than like using a mouse. Commands are terse (often only a couple of characters long), their names are frequently cryptic, and their output is lines of text rather than something visual like a graph. On the other hand, with only a few keystrokes, the shell allows us to combine existing tools into powerful pipelines and handle large volumes of data automatically. This automation not only makes us more productive, but also improves the reproducibility of our workflows by allowing us to repeat them with few simple commands.
 
@@ -56,8 +56,8 @@ $ ls
 ~~~
 Output:
 ~~~
-Applications Documents    Library      Music        Public
-Desktop      Downloads    Movies       Pictures
+Desktop     Downloads     Movies      Pictures   
+Documents   Library       Music       Public
 ~~~
 
 We may want more information than just a list of files and directories.
@@ -74,7 +74,7 @@ $ ls -l
 ~~~
 Output:
 ~~~
-total 0
+total 34
 drwx------+  6 amyhodge  staff   204 Jul 16 11:50 Desktop
 drwx------+  3 amyhodge  staff   102 Jul 16 11:30 Documents
 drwx------+  3 amyhodge  staff   102 Jul 16 11:30 Downloads
@@ -85,29 +85,35 @@ drwx------+  3 amyhodge  staff   102 Jul 16 11:30 Pictures
 drwxr-xr-x+  5 amyhodge  staff   170 Jul 16 11:30 Public
 ~~~
 
-In everyday usage we are more used to units of measurement like kilobytes, megabytes, and gigabytes.
-Luckily, there's another flag `-h` that when used with the -l option, use unit suffixes:
-Byte, Kilobyte, Megabyte, Gigabyte, Terabyte and Petabyte in order to reduce the
-number of digits to three or less using base 2 for sizes.
-
-Now `ls -h` won't work on its own. When we want to combine two flags,
-we can just run them together. So, by typing `ls -lh` and hitting
-enter we receive an output in a human-readable format (note: the order here doesn't matter).
+Let's say you are interested in having the contents of your directory sorted by size. Luckily, there's another flag `-S` that can do this for you.
 
 ~~~
-$ ls -lh
+$ ls -S
 ~~~
 Output:
 ~~~
-total 0
+Library     Public        Downloads     Music
+Desktop     Documents     Movies        Pictures           
+~~~
+
+This would be better if we could still see the actual sizes, so let's combine the -l and -S flags. When we want to combine two flags,
+we can just run them together. So, by typing `ls -lS` and hitting
+enter we receive an output in a human-readable format (note: the order of the flags here doesn't matter).
+
+~~~
+$ ls -lS
+~~~
+Output:
+~~~
+total 34
+drwx------@ 46 amyhodge  staff   1.5K Jul 16 11:38 Library
 drwx------+  6 amyhodge  staff   204B Jul 16 11:50 Desktop
+drwxr-xr-x+  5 amyhodge  staff   170B Jul 16 11:30 Public
 drwx------+  3 amyhodge  staff   102B Jul 16 11:30 Documents
 drwx------+  3 amyhodge  staff   102B Jul 16 11:30 Downloads
-drwx------@ 46 amyhodge  staff   1.5K Jul 16 11:38 Library
 drwx------+  3 amyhodge  staff   102B Jul 16 11:30 Movies
 drwx------+  3 amyhodge  staff   102B Jul 16 11:30 Music
 drwx------+  3 amyhodge  staff   102B Jul 16 11:30 Pictures
-drwxr-xr-x+  5 amyhodge  staff   170B Jul 16 11:30 Public
 ~~~
 
 We've now spent a great deal of time in our home directory.
