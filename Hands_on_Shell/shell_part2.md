@@ -411,35 +411,35 @@ Pair up with your neighbor and work on these exercies:
 > a word you choose in all four derived tsv files in this directory.
 > Print your results to the shell.
 
-#### [Exercise 14 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-15-answer)
+#### [Exercise 14 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-14-answer)
 
 > ### Exercise 15: Case sensitive search in select files
 > Search for all case sensitive instances of a word you choose in
 > the 'America' and 'Africa' tsv files in this directory.
 > Print your results to the shell.
 
-#### [Exercise 15 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-16-answer)
+#### [Exercise 15 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-15-answer)
 
 > ### Exercise 16: Count words (case sensitive)
 > Count all case sensitive instances of a word you choose in
 > the 'America' and 'Africa' tsv files in this directory.
 > Print your results to the shell.
 
-#### [Exercise 16 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-17-answer)
+#### [Exercise 16 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-16-answer)
 
 > ### Exercise 17: Count words (case insensitive)
 > Count all case insensitive instances of that word in the 'America' and 'Africa' tsv files
 > in this directory. Print your results to the shell.
 
-#### [Exercise 17 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-18-answer)
+#### [Exercise 17 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-17-answer)
 
 > ### Exercise 18: Case insensitive search in select files
 > Search for all case insensitive instances of that
 > word in the 'America' and 'Africa' tsv files in this directory. Print your results to  a file `results/new.tsv`.
 
-#### [Exercise 18 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-19-answer)
+#### [Exercise 18 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-18-answer)
 
-> ### Exercise 20: Counting number of files, part II
+> ### Exercise 19: Counting number of files, part II
 > In the earlier counting exercise in this episode, you tried counting the number
 > of files and directories in the current directory.
 >
@@ -451,6 +451,6 @@ Pair up with your neighbor and work on these exercies:
 >   with the text "total". The hat character (^) is used
 >   in regular expressions to indicate the start of a line.
 
-#### [Exercise 20 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-22-answer)
+#### [Exercise 19 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-19-answer)
 
 [<< Back to Part 1](https://amyehodge.github.io/Hands_on_Shell/shell_part1)
