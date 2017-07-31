@@ -29,25 +29,25 @@ $ pwd
 ~~~
 Output:
 ~~~
-/Users/riley/Desktop/shell-lesson
+/Users/amyhodge/Desktop/shell-lesson
 ~~~
 
 And let's just check what files are in the directory and how large they
-are with `ls -lh`:
+are with `ls -l`:
 
 ~~~
-$ ls -lh
+$ ls -l
 ~~~
 Output:
 ~~~
-total 139M
--rw-r--r-- 1 riley staff 3.6M Jan 31 18:47 2014-01-31_JA-africa.tsv
--rw-r--r-- 1 riley staff 7.4M Jan 31 18:47 2014-01-31_JA-america.tsv
--rw-rw-r-- 1 riley staff 126M Jun 10  2015 2014-01_JA.tsv
--rw-r--r-- 1 riley staff 1.4M Jan 31 18:47 2014-02-02_JA-britain.tsv
--rw-r--r-- 1 riley staff 583K Feb  1 22:53 33504-0.txt
-drwxr-xr-x 2 riley staff   68 Feb  2 00:58 backup
--rw-r--r-- 1 riley staff 598K Jan 31 18:47 gulliver.txt
+total 283792
+-rw-r--r--@ 1 amyhodge  staff   3.6M Jan 31 16:47 2014-01-31_JA-africa.tsv
+-rw-r--r--@ 1 amyhodge  staff   7.4M Jan 31 16:47 2014-01-31_JA-america.tsv
+-rw-rw-r--@ 1 amyhodge  staff   125M Jun 10  2015 2014-01_JA.tsv
+-rw-r--r--@ 1 amyhodge  staff   1.4M Jan 31 16:47 2014-02-02_JA-britain.tsv
+-rw-r--r--@ 1 amyhodge  staff   582K Feb  1 23:15 33504-0.txt
+-rw-r--r--@ 1 amyhodge  staff   598K Jan 31 16:47 gulliver.txt
+drwxr-xr-x  2 amyhodge  staff    68B Jul 31 11:43 backup/
 ~~~
 
 In this episode we'll focus on the dataset `2014-01_JA.tsv`, that contains
@@ -61,9 +61,9 @@ as `africa` or `america` appears in the 'Title' field of `2014-01_JA.tsv`.
 > TSV (Tab-separated values) is just the same except that values are separated by
 > tabs rather than commas. Confusingly, CSV is sometimes used to refer to both CSV,
 > TSV and variations of them. The simplicity of the formats make them great for
-> exchange and archival. They are not bound to a specific program (unlike Excel
+> exchange and archiving. They are not bound to a specific program (unlike Excel
 > files, say, there is no `CSV` program, just lots and lots of programs that
-> support the format, including Excel by the way.), and you wouldn't have any
+> support the format, including Excel by the way), and you wouldn't have any
 > problems opening a 40 year old file today if you came across one.
 
 `wc` is the "word count" command: it counts the number of lines, words, bytes
@@ -83,14 +83,14 @@ Output:
    554211  19364171 144081136 total
 ~~~
 
-The first three columns contains the number of lines, words and bytes
+The first three columns contains the number of lines, words, and bytes
 (to show number characters you have to use a flag).
 
 If we only have a handful of files to compare, it might be faster or more convenient
-to just check with Microsoft Excel, OpenRefine or your favourite text editor, but
-when we have tens, hundres or thousands of documents, the Unix shell has a clear
-speed advantage. The real power of the shell comes from being able to combine commands
-and automate tasks, though. We will touch upon this slightly.
+to just check with Microsoft Excel, OpenRefine or your favorite text editor, but
+when we have tens, hundreds or thousands of documents, the Unix shell has a clear
+speed advantage. But the real power of the shell comes from being able to combine commands
+and automate tasks. We will touch upon this slightly.
 
 For now, we'll see how we can build a simple pipeline to find the shortest file
 in terms of number of lines. We start by adding the `-l` flag to get only the
@@ -109,18 +109,18 @@ Output:
 ~~~
 
 The `wc` command itself doesn't have a flag to sort the output, but as we'll
-see, we can combine three differen shell commands to get what we want.
+see, we can combine three different shell commands to get what we want.
 
 First, we have the `wc -l *.tsv` command. We will save the output from this
 command in a new file. To do that, we *redirect* the output from the command
-to a file using the ‘greater than’ sign (>), like so:
+to a file using the ‘greater than’ sign `>` (or right angle bracket), like so:
 
 ~~~
 $ wc -l *.tsv > lengths.txt
 ~~~
 
 There's no output now since the output went into the file `lengths.txt`, but
-we can check that the output indeed ended up in the file using `cat` or `less`
+we can check that the output ended up in the file using `cat` or `less`
 (or Notepad or any text editor).
 
 ~~~~
@@ -168,7 +168,7 @@ results now stored in `lengths.txt` and `sorted-lengths.txt`. What if we could
 send the results from the first command (`wc -l *.tsv`) directly to the next
 command (`sort -n`) and then the output from that command to `head -n 1`?
 Luckily we can, using a concept called pipes. On the command line, you make a
-pipe with the vertical bar character |. Let's try with one pipe first:
+pipe with the vertical bar character `|`. Let's try with one pipe first:
 
 ~~~~
 $ wc -l *.tsv | sort -n
@@ -221,17 +221,8 @@ programming languages.
 
 #### [Exercise 9 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-9-answer)
 
-> ## Exercise 10 : Count, sort and print (faded example)
->To count the total lines in every `tsv` file, sort the results, and then print the first line of the file we use the following:
->
->~~~
->wc -l `*.tsv` | sort | head -n 1
->~~~
->
->In all `csv` files in a directory count the words for each file, then put them into order. Finally, make an output of the 10 files with the most words (Hint: The sort command sorts in ascending order by default).
->
->~~~
->__ -w `*.csv` | sort | ____
+> ## Exercise 10 : Count, sort, and print
+>Let's say you have a directory containing over 100 `csv` files. How would you count the number of words in each file, sort this list, and then output the 10 files with the most words (Hint: The sort command sorts in ascending order by default)?
 >~~
 
 #### [Exercise 10 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-10-answer)
