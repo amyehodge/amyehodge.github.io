@@ -78,67 +78,38 @@ $ date >> logfile.txt
 $ cat logfile.txt
 ~~~
 
-## Exercise 14 Answer
-From `man wc`, you will see that there is a `-w` flag to print the number of words:
-~~~
--w      The number of words in each input file is written to the standard output.
-~~~
-So to print the word counts of the `.tsv` files:
-~~~
-$ wc -w *.tsv
-~~~
-Output:
-~~~
-   511261 2014-01-31_JA-africa.tsv
-  1049601 2014-01-31_JA-america.tsv
- 17606310 2014-01_JA.tsv
-   196999 2014-02-02_JA-britain.tsv
- 19364171 total
-~~~
-And to sort the lines numerically:
-~~~
-$ wc -w *.tsv | sort -n
-~~~
-Output:
-~~~
-   196999 2014-02-02_JA-britain.tsv
-   511261 2014-01-31_JA-africa.tsv
-  1049601 2014-01-31_JA-america.tsv
- 17606310 2014-01_JA.tsv
- 19364171 total
-~~~
 
-## Exercise 15 Answer
+## Exercise 14 Answer
 ~~~
 $ grep hero *.tsv
 ~~~
 
-## Exercise 16 Answer
+## Exercise 15 Answer
 ~~~
 $ grep hero *a.tsv
 ~~~
 
-## Exercise 17 Answer
+## Exercise 16 Answer
 ~~~
 $ grep -c hero *a.tsv
 ~~~
 
-## Exercise 18 Answer
+## Exercise 17 Answer
 ~~~
 $ grep -ci hero *a.tsv
 ~~~
 
-## Exercise 19 Answer
+## Exercise 18 Answer
 ~~~
 $ grep -i hero *a.tsv > results/new.tsv
 ~~~
 
-## Exercise 20 Answer
+## Exercise 19 Answer
 ~~~
 $ grep -iw hero *a.tsv > results/new2.tsv
 ~~~
 
-## Exercise 21 Answer
+## Exercise 20 Answer
 ~~~
 $ grep -E '\d{4}-\d{4}' 2014-01_JA.tsv > issns.tsv
 ~~~
@@ -149,12 +120,12 @@ $ grep -P '\d{4}-\d{4}' 2014-01_JA.tsv > issns.tsv
 If you came up with something more advanced, perhaps including word boundaries,
 please share your result on the Etherpad and give yourself a pat on the shoulder.
 
-## Exercise 22 Answer
+## Exercise 21 Answer
 ~~~
 $ grep -Eo '\d{4}-\d{4}' 2014-01_JA.tsv | uniq | wc -l
 ~~~
 
-## Exercise 23 Answer
+## Exercise 22 Answer
 To find any lines starting with "total", we would use:
 ~~~
 $ ls -l | grep -E '^total'
