@@ -120,11 +120,6 @@ If you came up with something more advanced, perhaps including word boundaries,
 please share your result on the Etherpad and give yourself a pat on the shoulder.
 
 ## Exercise 21 Answer
-~~~
-$ grep -Eo '\d{4}-\d{4}' 2014-01_JA.tsv | uniq | wc -l
-~~~
-
-## Exercise 22 Answer
 To find any lines starting with "total", we would use:
 ~~~
 $ ls -l | grep -E '^total'
