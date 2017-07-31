@@ -88,7 +88,7 @@ drwxr-xr-x+  5 amyhodge  staff   170 Jul 16 11:30 Public
 Let's say you are interested in having the contents of your directory sorted by the most recently modified. Luckily, there's another flag `-u` that can do this for you.
 
 ~~~
-$ ls -S
+$ ls -u
 ~~~
 Output:
 ~~~
@@ -200,7 +200,7 @@ we can read them, open them, run them, and even edit them. In fact, there's real
 no limit to what we *can* do in the shell, but even experienced shell users still switch to
 graphical user interfaces (GUIs) for many tasks, such as editing formatted text
 documents (Word or OpenOffice), browsing the web, editing images, etc. But if we
-wanted to make the same crop on hundreds of images, then we could automate the cropping using shell commands.
+wanted to make the same modification on hundreds of files, then we could automate that task using shell commands.
 
 We will try a few basic ways to interact with files. Let's first move into the
 shell-lesson directory on your desktop (if you don't have this directory,
@@ -251,17 +251,17 @@ Here there are copies of two public domain books downloaded from
 cover later.
 
 ~~~
-$ ls -lh
+$ ls -l
 ~~~
 Output:
 ~~~
-total 139M
--rw-r--r-- 1 amyhodge staff 3.6M Jan 31 18:47 2014-01-31_JA-africa.tsv
--rw-r--r-- 1 amyhodge staff 7.4M Jan 31 18:47 2014-01-31_JA-america.tsv
--rw-rw-r-- 1 amyhodge staff 126M Jun 10  2015 2014-01_JA.tsv
--rw-r--r-- 1 amyhodge staff 1.4M Jan 31 18:47 2014-02-02_JA-britain.tsv
--rw-r--r-- 1 amyhodge staff 583K Feb  1 22:53 33504-0.txt
--rw-r--r-- 1 amyhodge staff 598K Jan 31 18:47 829-0.txt
+total 283792
+-rw-r--r--@ 1 amyhodge  staff   3.6M Jan 31 16:47 2014-01-31_JA-africa.tsv
+-rw-r--r--@ 1 amyhodge  staff   7.4M Jan 31 16:47 2014-01-31_JA-america.tsv
+-rw-rw-r--@ 1 amyhodge  staff   125M Jun 10  2015 2014-01_JA.tsv
+-rw-r--r--@ 1 amyhodge  staff   1.4M Jan 31 16:47 2014-02-02_JA-britain.tsv
+-rw-r--r--@ 1 amyhodge  staff   582K Feb  1 23:15 33504-0.txt
+-rw-r--r--@ 1 amyhodge  staff   598K Jan 31 16:47 829-0.txt
 ~~~
 
 The files 829-0.txt and 33504-0.txt hold the content of book #829
@@ -368,7 +368,7 @@ Title: Opticks
 ~~~
 
 All good so far, but if we had *lots* of books, it would be tedious to enter
-all the filenames. Luckily the shell supports wildcards! The `?` (matches exactly
+all the filenames. Luckily the shell supports wildcards! The wildcards `?` (matches exactly
 one character) and `*` (matches zero or more characters) are probably familiar
 from library search systems. We can use the `*` wildcard to write the above `head`
 command in a more compact way:
@@ -413,8 +413,7 @@ Output:
 > ## Exercise 4: Copying a file
 >
 > Instead of *moving* a file, you might want to *copy* a file (make a duplicate),
-> for instance to make a backup before modifying a file using some script you're
-> not quite sure how it works.
+> for instance to make a backup before modifying a file using some script whose function you're not quite sure of.
 > Just like the `mv` command, the `cp` command takes two arguments: the old name
 > and the new name. How would you make a copy of the file `gulliver.txt` called
 > `gulliver-backup.txt`? Try it!
