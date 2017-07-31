@@ -252,7 +252,7 @@ programming languages.
 
 Searching for something in one or more files is something we'll often need to do,
 so let's introduce a command for doing that: `grep` (short for **global regular
-expression print**). As the name suggests, it supports regular expressions and
+expression print**). This command supports regular expressions and
 is therefore only limited by your imagination, the shape of your data, and - when
 working with thousands or millions of files - the processing power at your disposal.
 
@@ -277,7 +277,7 @@ print the matching lines.
 > A string is a sequence of characters, or "a piece of text".
 
 Press the up arrow once in order to cycle back to your most recent action.
-Amend `grep 1999 *.tsv` to `grep -c 1999 *.tsv` and hit enter.
+Change `grep 1999 *.tsv` to `grep -c 1999 *.tsv` by using the arrow keys and hit enter. The `-c` flag changes the command so that instead of returning the matching lines, it counts them and displays the number found after each file name.
 
 ~~~
 $ grep -c 1999 *.tsv
@@ -290,11 +290,9 @@ Output:
 2014-02-02_JA-britain.tsv:284
 ~~~
 
-The shell now prints the number of times the string 1999 appeared in each file.
-If you look at the output from the previous command, this tends to refer to the
-date field for each journal article.
+If you look at the output from the previous `grep 1999 *.tsv` command, you can see that 1999 is typically found in the date field for each journal article.
 
-We will try another search:
+Now try this search:
 
 ~~~
 $ grep -c revolution *.tsv
@@ -308,7 +306,7 @@ Output:
 ~~~
 
 We got back the counts of the instances of the string `revolution` within the files.
-Now, amend the above command to the below and observe how the output of each is different:
+Now, amend the above command to the below and observe how the output is different:
 
 ~~~
 $ grep -ci revolution *.tsv
@@ -321,14 +319,14 @@ Output:
 2014-02-02_JA-britain.tsv:122
 ~~~
 
-This repeats the query, but prints a case
-insensitive count (including instances of both `revolution` and `Revolution` and other variants).
+The `-i` flag makes the command case
+insensitive, so that it now includes instances of both `revolution` and `Revolution`.
 Note how the count has increased nearly 30 fold for those journal article
-titles that contain the keyword 'america'. As before, cycling back and
+titles that contain the keyword `america`. As before, cycling back and
 adding `> results/`, followed by a filename (ideally in .txt format), will save the results to a data file.
 
-So far we have counted strings in file and printed to the shell or to
-file those counts. But the real power of `grep` comes in that you can
+So far we have counted strings in files and printed those counts to the shell or to
+a file. But the real power of `grep` comes in that you can
 also use it to create subsets of tabulated data (or indeed any data)
 from one or multiple files.  
 
@@ -371,17 +369,17 @@ Output:
    18554 total
 ~~~
 
-Finally, we'll use the **regular expression syntax** covered earlier to search for similar words.
+Finally, let's try out using a regular expression to search for similar words.
 
 > #### Tip: Basic and extended regular expressions
-> There is unfortunately both ["basic" and "extended" regular expressions](https://www.gnu.org/software/grep/manual/html_node/Basic-vs-Extended.html).
+> There are unfortunately both ["basic" and "extended" regular expressions](https://www.gnu.org/software/grep/manual/html_node/Basic-vs-Extended.html).
 > This is a common cause of confusion, since most tutorials, including ours, teach
 > extended regular expression, but `grep` uses basic by default.
 > Unles you want to remember the details, make your life easy by always using
 > extended regular expressions (`-E` flag) when doing something more complex
 > than searching for a plain string.
 
-The regular expression 'fr[ae]nc[eh]' will match "france", "french", but also "frence" and "franch".
+The regular expression `fr[ae]nc[eh]` will match "france", "french", but also "frence" and "franch".
 It's generally a good idea to enclose the expression in single quotation marks, since
 that ensures the shell sends it directly to grep without any processing (such as trying to
 expand the wildcard operator `*`).
@@ -456,16 +454,7 @@ Pair up with your neighbor and work on these exercies:
 
 #### [Exercise 20 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-21-answer)
 
-> ### Exercise 21: Finding unique values
-> If you pipe something to the `uniq` command, it will filter out duplicate lines
-> and only return unique ones. Try piping the output from the command in the last exercise
-> to `uniq` and then to `wc -l` to count the number of unique ISSN values.
-> Note: This exercise requires the `-o` flag. See the callout box "Invalid option -- o?"
-> above.
-
-#### [Exercise 21 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-22-answer)
-
-> ### Exercise 22: Counting number of files, part II
+> ### Exercise 21: Counting number of files, part II
 > In the earlier counting exercise in this episode, you tried counting the number
 > of files and directories in the current directory.
 >
@@ -477,6 +466,6 @@ Pair up with your neighbor and work on these exercies:
 >   with the text "total". The hat character (^) is used
 >   in regular expressions to indicate the start of a line.
 
-#### [Exercise 22 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-22-answer)
+#### [Exercise 21 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-22-answer)
 
 [<< Back to Part 1](https://amyehodge.github.io/Hands_on_Shell/shell_part1)
