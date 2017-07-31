@@ -103,7 +103,7 @@ $ grep -ci hero *a.tsv
 $ grep -i hero *a.tsv > results/new.tsv
 ~~~
 
-## Exercise 21 Answer
+## Exercise 19 Answer
 To find any lines starting with "total", we would use:
 ~~~
 $ ls -l | grep -E '^total'
