@@ -118,8 +118,7 @@ drwx------+  3 amyhodge  staff   102B Jul 16 11:30 Pictures
 
 We've now spent a great deal of time in our home directory.
 Let's go somewhere else. We can do that through the `cd` or Change Directory command:
-(Note: On Windows and Mac, by default, the case of the file/directory doesn't matter
-On Linux it does.)
+(Note: On some systems the case of the file/directory name doesn't matter. On some systems it does.)
 
 ~~~
 $ cd Desktop
@@ -140,11 +139,11 @@ If something had gone wrong, however, the command would have told you. Let's
 see by trying to move into a (hopefully) non-existing directory:
 
 ~~~
-$ cd "big trouble"
+$ cd trouble
 ~~~
 Output:
 ~~~
--bash: cd: big trouble: No such file or directory
+-bash: cd: trouble: No such file or directory
 ~~~
 
 Notice that we surrounded the name by quotation marks. The *arguments* given
