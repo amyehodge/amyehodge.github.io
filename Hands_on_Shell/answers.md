@@ -110,9 +110,9 @@ $ ls -l | grep -E '^total'
 ~~~
 To *exclude* those lines, we add the `-v` flag:
 ~~~
-$ ls -l | grep -v -E '^total'
+$ ls -l | grep -vE '^total'
 ~~~
 The grand finale is to pipe this into `wc -l`:
 ~~~
-$ ls -l | grep -v -E '^total' | wc -l
+$ ls -l | grep -vE '^total' | wc -l
 ~~~
