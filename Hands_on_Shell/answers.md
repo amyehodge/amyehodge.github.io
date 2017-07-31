@@ -103,22 +103,6 @@ $ grep -ci hero *a.tsv
 $ grep -i hero *a.tsv > results/new.tsv
 ~~~
 
-## Exercise 19 Answer
-~~~
-$ grep -iw hero *a.tsv > results/new2.tsv
-~~~
-
-## Exercise 20 Answer
-~~~
-$ grep -E '\d{4}-\d{4}' 2014-01_JA.tsv > issns.tsv
-~~~
-or
-~~~
-$ grep -P '\d{4}-\d{4}' 2014-01_JA.tsv > issns.tsv
-~~~
-If you came up with something more advanced, perhaps including word boundaries,
-please share your result on the Etherpad and give yourself a pat on the shoulder.
-
 ## Exercise 21 Answer
 To find any lines starting with "total", we would use:
 ~~~

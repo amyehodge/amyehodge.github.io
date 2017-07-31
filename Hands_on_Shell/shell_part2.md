@@ -439,22 +439,16 @@ Pair up with your neighbor and work on these exercies:
 
 #### [Exercise 18 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-19-answer)
 
-> ### Exercise 19: Case insensitive search in select files (whole word)
-> Search for all case insensitive instances of that whole word
-> in the 'America' and 'Africa' tsv files in this directory. Print your results to a file `results/new2.tsv`.
-
-#### [Exercise 19 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-20-answer)
-
-> ### Exercise 20: Searching with regular expressions
+> ### Exercise 19: Searching with regular expressions
 > Use regular expressions to find all ISSN numbers
 > (four digits followed by hyphen followed by four digits)
 > in `2014-01_JA.tsv` and print the results to a file `results/issns.tsv`.
 > Note that you might have to use the `-E` flag (or `-P` with some versions
 > of `grep`, e.g. with Git Bash on Windows.).
 
-#### [Exercise 20 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-21-answer)
+#### [Exercise 19 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-21-answer)
 
-> ### Exercise 21: Counting number of files, part II
+> ### Exercise 20: Counting number of files, part II
 > In the earlier counting exercise in this episode, you tried counting the number
 > of files and directories in the current directory.
 >
@@ -466,6 +460,6 @@ Pair up with your neighbor and work on these exercies:
 >   with the text "total". The hat character (^) is used
 >   in regular expressions to indicate the start of a line.
 
-#### [Exercise 21 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-22-answer)
+#### [Exercise 20 Solution](https://amyehodge.github.io/Hands_on_Shell/answers.html#exercise-22-answer)
 
 [<< Back to Part 1](https://amyehodge.github.io/Hands_on_Shell/shell_part1)
