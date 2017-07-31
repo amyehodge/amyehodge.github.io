@@ -10,7 +10,7 @@ a command line interface to your computer and the files to which it has access.
 A shell is a command-line interpreter that provides a user interface for the Linux
 operating system and for Unix-like systems (such as Mac OS).
 
-For Windows users, popular shells such as Cygwin or Git Bash provide a Unix-like
+For Windows users, popular shells such as Cygwin (https://www.cygwin.com/) or Git Bash (https://git-for-windows.github.io/) provide a Unix-like
 interface. This session will cover a small number of basic commands using Git Bash for Windows users,
 Terminal for Mac OS. These commands constitute building blocks upon which more
 complex commands can be constructed to fit your data or project.
