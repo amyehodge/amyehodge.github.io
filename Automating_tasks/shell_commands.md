@@ -1,13 +1,13 @@
-#Shell commands cheat sheet  
+# Shell commands cheat sheet  
 The following is a summary of UNIX shell commands used in this workshop. They are listed in alphabetical(-ish) order. These are just a few of the many, many UNIX commands that exist.
- 
-##cat
+
+## cat
 
 > **COMMAND:** cat  
 > Reads the content of the file  
 > **DEFAULT BEHAVIOR:** Directs output to your screen##grep
 
-##grep
+## grep
 
 > **COMMAND:** grep  
 > Identifies lines within your file that match a pattern  
@@ -18,7 +18,7 @@ The following is a summary of UNIX shell commands used in this workshop. They ar
 > **FLAG:** -E  
 > Tells the program that we are going to be using a regular expression for the pattern that it needs to match
 
-##rm
+## rm
 
 > **COMMAND:** rm  
 > Removes an entry from a directory
@@ -32,7 +32,7 @@ The following is a summary of UNIX shell commands used in this workshop. They ar
 > Redirects output to a file.  
 > **WARNING:** This is EXTREMELY slow, so it's better to redirect the output into another command if you can.
 
-##uniq   
+## uniq   
 
 > **COMMAND:** uniq  
 > Reports or filters out repeated adjacent lines in a file  
@@ -40,18 +40,18 @@ The following is a summary of UNIX shell commands used in this workshop. They ar
 > **FLAG:** -u  
 > Outputs each unique line in the file
 
-##other stuff
-###| (pipe)
+## other stuff
+### | (pipe)
 
 > **COMMAND:** |  
 > Redirects the output from one command directly into the next command as input##>
 
-###>
+### >
 > **COMMAND:** >  
 > Redirects content into a file instead of to your screen   
 > **WARNING:** Overwrites the content of an existing file without warning!    
 
-##>>
+## >>
 
 > **COMMAND:** >>  
 > Appends the redirected content to an existing file, instead of overwriting it###built-in variables
@@ -60,11 +60,11 @@ The following is a summary of UNIX shell commands used in this workshop. They ar
 > **VARIABLES:** $1 and $2  
 > These are special variables (actually $1 - $9) that are built into the UNIX system and correspond to the arguments passed to the program when it is run.  
 
-###running a script  
+### running a script  
 
 > **COMMAND:** bash [filename.sh]
 
-###shebang
+### shebang
 
 Tells the computer which interpreter to use to run the script. The shebang below indicates we are using the bash shell.
 
