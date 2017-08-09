@@ -52,13 +52,16 @@ simplified it a little bit for the workshop, but you can download the
 [full dataset](http://esapubs.org/archive/ecol/E090/118/) and work with it using
 exactly the same tools we'll learn about today.
 
+***CHALLENGE 1: Open each of the csv files and explore them. What information is contained in each file? What would you need to answer the following research questions? Which files have the data you would need? What operations would you need to perform if you were doing these analyses from these csv files?
+* How has the hindfoot length and weight of *Dipodomys* species changed over time?
+* What is the average weight of each species, per year?
+* What information can I learn about *Dipodomys* species in the 2000s, over time?***
+
 ## <a name="import"></a> Import data into SQLite
 
 We can import our data in one of two ways:  
 1. Import the .sqlite database file  
 2. Import the individual tables  
-
-For this workshop we will start with the database file, because it's quicker. But instructions are included below for importing the individual tables as well.
 
 ### Import the database file
 
@@ -86,7 +89,7 @@ When asked if you want to modify the table, click **OK** and then set the data t
 | Table | Column | Data Type | Other features |
 | ------|------|------|------ |
 | plots | plot_id |integer | primary key, unique |
-| plots | plot_type | varchar |
+| plots | plot_type | text |
 
 
 ![Defining data types](http://amyehodge.github.io/Beginning_SQL/images/BSQL2.png "Defining data types")
@@ -98,23 +101,23 @@ and search tab in the right hand section of the screen.
 
 ![Contents of species table](http://amyehodge.github.io/Beginning_SQL/images/BSQL3.png "Contents of species table")
 
-***EXERCISE 0: Import the species and surveys tables using the information provided in the table below.***
+***CHALLENGE 0: Import the species and surveys tables using the information provided in the table below.***
 
 | Table | Column | Data Type | Other features |
 | :------|:------|:------|:------ |
-| species | species_id | char(2) | primary key, unique |
-| species | genus | varchar |  |
-| species | species | varchar | 	 |
-| species | taxa | varchar |  |
+| species | species_id | text | primary key, unique |
+| species | genus | text |  |
+| species | species | text | 	 |
+| species | taxa | text |  |
 | surveys | record_id | integer | primary key, unique |
 | surveys | month | integer |  |
 | surveys | day | integer |  |
 | surveys | year | 	integer	 |  |
 | surveys | plot_id | integer |  |
-| surveys | species_id | char(2) | allow null  |
-| surveys | sex | char(1) | allow null |
-| surveys | hindfoot_length | integer | allow null |
-| surveys | weight | integer | allow null |
+| surveys | species_id | text | allow null  |
+| surveys | sex | text | allow null |
+| surveys | hindfoot_length | real | allow null |
+| surveys | weight | real | allow null |
 
 You can also use this same approach to append new data to an existing table.
 
@@ -173,7 +176,7 @@ Or we can select all of the columns in a table using the wildcard "``*``".
 
     SELECT * FROM surveys;
 
-***EXERCISE 1: Write a query that returns the year, month, day, species ID, and weight.***
+***CHALLENGE 1: Write a query that returns the year, month, day, species ID, and weight from the surveys table.***
 
 ### <a name="unique"></a> Unique values
 
@@ -194,14 +197,14 @@ This is a good point to introduce another best practice for formatting SQL queri
 
 We can also do calculations with the values in a query. For example, if we wanted to look at the mass of each individual on different dates, but we needed it in kg instead of g we could use this query:
 
-    SELECT year, month, day, weight/1000.0
+    SELECT year, month, day, weight/1000
     FROM surveys;
 
-When we run the query, the expression `weight/1000.0` is evaluated for each row and appended to that row, in a new column. Note that because weight is an integer, if we divide by the integer 1000, the results will be reported as integers. In order to get more significant digits, you need to include the decimal point so that SQL knows you want the results reported as floating point numbers.
+When we run the query, the expression `weight/1000` is evaluated for each row and appended to that row, in a new column. Note that if we had used the integer data type for weight and divided by the integer 1000, the results would have been reported as integers. In order to get more significant digits, you would need to include the decimal point so that SQL knows you want the results reported as floating point numbers.
 
 Expressions can use any fields, any arithmetic operators (+ - * /) and a variety of built-in functions (`MAX`, `MIN`, `AVG`, `SUM`, `ROUND`, `UPPER`, `LOWER`, `LEN`, etc). For example, we could round the values to make them easier to read.
 
-    SELECT plot, species_ID, sex, weight, ROUND(weight/1000.0, 2)
+    SELECT plot, species_ID, sex, weight, ROUND(weight/1000, 2)
     FROM surveys;
 
 ## <a name="filtering"></a> Filtering
@@ -252,7 +255,7 @@ The above query is getting kind of long, so let's use a shortcut for all those `
 
 We started with something simple, then added more clauses one by one, testing their effects as we went along. For complex queries, this is a good strategy to make sure you are getting what you want. It also might be helpful to create a subset of the data that you can easily see in a temporary database to practice your queries on before working on a larger or more complicated database.
 
-***EXERCISE 2: Update your query from Exercise 1 to include plot ID in the results, and include filters so that only individuals caught on plot 1 or plot 2 and that weigh more than 75g are returned.***
+***CHALLENGE 2: Update your query from Challenge 1 to include plot ID in the results, and include filters so that only individuals caught on plot 1 or plot 2 and that weigh more than 75g are returned.***
 
 ## <a name="missing"></a>Missing data
 
@@ -270,7 +273,7 @@ Or to find all cases where a weight value was entered:
     FROM surveys
     WHERE weight IS NOT NULL;            
 
-***EXERCISE 3: Write a query to determine the average weight of the individuals in records 1, 63, and 64. How are null values treated?***
+***CHALLENGE 3: Write a query to determine the average weight of the individuals in records 1, 63, and 64. How are null values treated?***
 
 ## <a name="sort"></a> Sorting
 
@@ -297,7 +300,7 @@ We can also sort on several fields at once. Let's do by plot and then by species
     WHERE (year < 1980 OR year >= 2000) AND (species_id IN ("DM", "DO", "DS"))
     ORDER BY plot_id ASC, species_id DESC;
 
-***EXERCISE 4: Update your query from Exercise 2 so that the results are ordered first by plot (ascending) and then lists the individuals in order from the biggest to the smallest.***
+***CHALLENGE 4: Update your query from Challenge 2 so that the results are ordered first by plot (ascending) and then lists the individuals in order from the biggest to the smallest.***
 
 ## <a name="order"></a>Order of execution vs. order of query
 
@@ -321,14 +324,14 @@ The computer is basically doing this:
 When we write queries, SQL dictates the query parts be supplied in a particular order: `SELECT`, `FROM`, `JOIN...ON`, `WHERE`, `GROUP BY`, `ORDER BY`. Note that this is not the same order in which the query is executed. (We'll get to `JOIN...ON` and `GROUP BY` in a bit.)
 
 
-***EXERCISE 5: Update your query from Exercise 4 so that weight is displayed in kilograms and rounded to two decimal places. Only display results for female animals captured in 1999. Order the results alphabetically by the species ID.***
+***CHALLENGE 5: Update your query from Challenge 4 so that weight is displayed in kilograms and rounded to two decimal places. Only display results for female animals captured in 1999. Order the results alphabetically by the species ID.***
 
 
 ## <a name="aggregation"></a> Aggregation
 
 Aggregation allows us to combine results by grouping records based on value and to calculate combined values in groups.
 
-Let’s go to the **surveys** table and find out how many individuals there are. Using the wildcard simply counts the number of records (rows).
+Let’s go to the **surveys** table and find out how many individuals there are. Using the wildcard counts the number of records (rows).
 
     SELECT COUNT(*)
     FROM surveys;
@@ -344,17 +347,11 @@ Something a little more useful might be finding the number and average weight of
     FROM surveys
     WHERE species_id="DM";
 
-Do you think you could output this value in kilograms, rounded to 3 decimal places?
+Now let's output this value in kilograms, rounded to 3 decimal places.
 
-    SELECT COUNT(*), ROUND(AVG(weight)/1000.0, 3)
+    SELECT COUNT(*), ROUND(AVG(weight)/1000, 3)
     FROM surveys
     WHERE species_id="DM";
-
-The field names for this output are kind of hard to decipher. We can make these easier to read by using `AS`.
-
-	SELECT COUNT(*) AS 'Total Records',
-	ROUND(AVG(weight)/1000.0, 3) AS 'Average Weight (kg)'
-	FROM surveys;
 
 Now, let's see how many individuals were counted in each species. We do this using a `GROUP BY` clause.
 
@@ -392,7 +389,7 @@ And now let's make the output a little more readable:
     GROUP BY species_id, year
     ORDER BY COUNT(*) DESC;
 
-***EXERCISE 6: Write a query to determine how many of each sex were counted in each species. Ignore the records with no sex indicated. Then, expanding on this query, list the weight of the largest animal in each category. Ignore the records that do not have weight indicated. What species ID is the largest female and how much does she weigh?***
+***CHALLENGE 6: Write a query to determine how many of each sex were counted in each species. Ignore the records with no sex indicated. Then, expanding on this query, list the weight of the largest animal in each category. Ignore the records that do not have weight indicated. What species ID is the largest female and how much does she weigh?***
 
 ## <a name="joins"></a> Joins
 
@@ -424,7 +421,7 @@ And if you get tired of typing all those table names over and over, you can defi
     GROUP BY u.species_id, year
     ORDER BY COUNT(*) DESC;
 
-***EXERCISE 7: Write a query that returns the genus, the species, and the weight of every individual captured at the site.***
+***CHALLENGE 7: Write a query that returns the genus, the species, and the weight of every individual captured at the site.***
 
 You can also combine many tables using a join. The query must include enough `JOIN`...`ON` clauses to link all of the tables together. In the query below, we are now looking at the count of each species for each type of plot during each year. This required 1) adding in an extra `JOIN`...`ON` clause, 2) including plot_type in the `SELECT` portion of the statement, and 3) adding plot_type to the `GROUP BY` function:
 
@@ -439,7 +436,7 @@ You can also combine many tables using a join. The query must include enough `JO
     GROUP BY u.species_id, year, plot_type
     ORDER BY COUNT(*) DESC;
 
-***EXERCISE 8: Expand the query above to include the plot type and average weights (rounded to two decimal places) for each species/plot type combination. Order the output from the lowest weight to the highest. Exclude all records that don't have weight values recorded. Optional: use table name abbreviations and make the output easier to read.***
+***CHALLENGE 8: Expand the query above to include the plot type and average weights (rounded to two decimal places) for each species/plot type combination. Order the output from the lowest weight to the highest. Exclude all records that don't have weight values recorded. Optional: use table name abbreviations and make the output easier to read.***
 
 ## <a name="sets"></a> Set operators
 
@@ -460,7 +457,7 @@ To use a set operator, write the two queries and combine them with the operator.
     FROM surveys
     WHERE weight>225;
 
-***EXERCISE 9: Write a query using a set operator to identify all the species (by genus, species, and species_id) found in 1977 but not in 2002.***
+***CHALLENGE 9: Write a query using a set operator to identify all the species (by genus, species, and species_id) found in 1977 but not in 2002.***
 
 
 ## <a name="datatypes"></a> Data types
@@ -635,7 +632,7 @@ Type `.exit` to leave sqlite.
 
 ## <a name="resources"></a> Resources
 * [SQL Cheat Sheet](http://amyehodge.github.io/Beginning_SQL/SQL_cheat_sheet.md)  
-* [Exercise Answer Key](http://amyehodge.github.io/Beginning_SQL/exercises_key.md)  
+* [Challenge Answer Key](http://amyehodge.github.io/Beginning_SQL/exercises_key.md)  
 * Online tutorials  
 	* [W3 Schools](http://www.w3schools.com/sql/)  
 	* [SQLZOO](http://sqlzoo.net/)  
