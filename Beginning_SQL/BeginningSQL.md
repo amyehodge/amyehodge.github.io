@@ -53,7 +53,7 @@ simplified it a little bit for the workshop, but you can download the
 exactly the same tools we'll learn about today.
 
 > #### CHALLENGE 1
-Open each of the csv files and explore them. What information is contained in each file? What would you need to answer the following research questions? Which files have the data you would need? What operations would you need to perform if you were doing these analyses from these csv files?
+> Open each of the csv files and explore them. What information is contained in each file? What would you need to answer the following research questions? Which files have the data you would need? What operations would you need to perform if you were doing these analyses from these csv files?
 > * How has the hindfoot length and weight of *Dipodomys* species changed over time?
 > * What is the average weight of each species, per year?
 > * What information can I learn about *Dipodomys* species in the 2000s, over time?
@@ -637,7 +637,7 @@ Type `.exit` to leave sqlite.
 
 ## <a name="resources"></a> Resources
 * [SQL Cheat Sheet](http://amyehodge.github.io/Beginning_SQL/SQL_cheat_sheet.md)  
-* [Challenge Answer Key](http://amyehodge.github.io/Beginning_SQL/exercises_key.md)  
+* [Challenge Answer Key](http://amyehodge.github.io/Beginning_SQL/challenges_key.md)  
 * Online tutorials  
 	* [W3 Schools](http://www.w3schools.com/sql/)  
 	* [SQLZOO](http://sqlzoo.net/)  
