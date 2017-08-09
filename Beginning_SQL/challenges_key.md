@@ -11,16 +11,35 @@ Instead of searching for the right peices of data ourselves, or clicking between
 
 Putting our data in a relational database will help us achieve these goals.
 
-#### Challenge 1
-Write a query that returns the year, month, day, species ID, and weight.
+#### Challenge 2
+Import the plots and surveys tables using the information provided in the table below.
+
+#### Challenge 3
+Identify the species ID and weight for each survey item and the date on which it was recorded.
 
 ```
 SELECT year, month, day, species_id, weight
 FROM surveys;
 ```
 
-#### Challenge 2
-Update your query from Challenge 1 to include plot ID in the results, and include filters so that only individuals caught on plot 1 or plot 2 and that weigh more than 75g are returned.
+#### Challenge 4
+Identify the species ID and weight in milligrams for each survey item and the date on which it was recorded.
+
+```
+SELECT
+```
+
+#### Challenge 5
+Produce a table listing the data for all individuals in Plot 1 that weighed more than 75 grams, telling us the date, species ID, and weight (in kg).
+
+```
+SELECT
+```
+
+
+
+#### Challenge 5
+Update your query from Challenge **??** to include plot ID in the results, and include filters so that only individuals caught on plot 1 or plot 2 and that weigh more than 75g are returned.
 
 ```
 SELECT year, month, day, species_id, plot_id, weight  
@@ -28,7 +47,7 @@ FROM surveys
 WHERE (plot_id=1 OR plot_id=2) AND (weight > 75);
 ```
 
-#### Challenge 3
+#### Challenge 6
 Write a query to determine the average weight of the individuals in records 1, 63, and 64. How are null values treated?
 
 ```

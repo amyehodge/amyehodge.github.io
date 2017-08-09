@@ -181,7 +181,8 @@ Or we can select all of the columns in a table using the wildcard "``*``".
 
     SELECT * FROM surveys;
 
-***CHALLENGE 1: Write a query that returns the year, month, day, species ID, and weight from the surveys table.***
+> #### CHALLENGE 3
+> Identify the species ID and weight for each survey item and the date on which it was recorded.
 
 ### <a name="unique"></a> Unique values
 
@@ -212,6 +213,9 @@ Expressions can use any fields, any arithmetic operators (+ - * /) and a variety
     SELECT plot, species_ID, sex, weight, ROUND(weight/1000, 2)
     FROM surveys;
 
+> #### CHALLENGE 4
+> Identify the species ID and weight in milligrams for each survey item and the date on which it was recorded.
+
 ## <a name="filtering"></a> Filtering
 
 Databases can also filter data – selecting only the data meeting certain criteria. For example, let’s say we only want data for the species *[Dipodomys merriami](https://en.wikipedia.org/wiki/Merriam%27s_kangaroo_rat)*, which has a species code of DM. We need to add a `WHERE` clause to our query:
@@ -226,15 +230,30 @@ We can do the same thing with numbers. Here, we only want the data since 2000:
     FROM surveys
     WHERE year >= 2000;
 
-We can use more sophisticated conditions by combining filters with AND as well as OR. For example, suppose we want the data on *Dipodomys merriami* starting in the year 2000:
+We can use more sophisticated conditions by combining filters with AND as well as OR. For example, suppose we want the data on *Dipodomys merriami* starting in the year 2000, we ccan combine those filters using `AND`.
 
     SELECT *
     FROM surveys
     WHERE (year >= 2000) AND (species_id = "DM");
 
+If we wanted get data for any of the *Dipodomys* species, which have species IDs of DM, DO, and DS, we can combine those using `OR`.
+
+		SELECT *
+		FROM surveys
+		WHERE (species_id = "DM") OR (species_id = "DO") OR (species_id = "DS");
+
 Note that the parentheses aren’t needed in this case, but again, they help with readability. They also ensure that the computer combines `AND` and `OR` in the way that we intend. (`AND` takes precedence over `OR` and will be evaluated before `OR`.)
 
-For example, if we wanted to get all the records from before 1980 or from 2000 or later that were about species DM and we might want to write the query this way:
+The above query is getting kind of long, so let's use a shortcut for all those `OR`s. This time, let’s use `IN` as one way to make the query easier to understand. `IN` is equivalent to saying `WHERE (species_id = "DM") OR (species_id = "DO") OR (species_id = "DS")`, but reads more neatly:
+
+    SELECT *
+    FROM surveys  
+    WHERE species_id IN ("DM", "DO", "DS");
+
+> #### CHALLENGE 5
+> Produce a table listing the data for all individuals in Plot 1 that weighed more than 75 grams, telling us the date, species ID, and weight (in kg).
+
+Going back to the evaluation of `AND` and `OR`, if we wanted to get all the records from before 1980 or from 2000 or later that were about species DM, we might be inclined to write the query this way:
 
 	SELECT *
 	FROM surveys
@@ -246,21 +265,10 @@ However, the program will evaluate `AND` first and then `OR`, which would give u
 	FROM surveys
 	WHERE (year < 1980 OR year >=2000) AND species_id="DM";
 
-If we wanted to get data from these years for any of the *Dipodomys* species, which have species codes DM, DO, and DS, we could combine the conditions using `OR`:
-
-    SELECT *
-    FROM surveys
-    WHERE (year < 1980 OR year >=2000) AND ((species_id = "DM") OR (species_id = "DO") OR (species_id = "DS"));
-
-The above query is getting kind of long, so let's use a shortcut for all those `OR`s. This time, let’s use `IN` as one way to make the query easier to understand. `IN` is equivalent to saying `WHERE (species_id = "DM") OR (species_id = "DO") OR (species_id = "DS")`, but reads more neatly:
-
-    SELECT *
-    FROM surveys  
-    WHERE (year < 1980 OR year >= 2000) AND (species_id IN ("DM", "DO", "DS"));
-
 We started with something simple, then added more clauses one by one, testing their effects as we went along. For complex queries, this is a good strategy to make sure you are getting what you want. It also might be helpful to create a subset of the data that you can easily see in a temporary database to practice your queries on before working on a larger or more complicated database.
 
-***CHALLENGE 2: Update your query from Challenge 1 to include plot ID in the results, and include filters so that only individuals caught on plot 1 or plot 2 and that weigh more than 75g are returned.***
+> #### CHALLENGE 2
+> Update your query from Challenge 1 to include plot ID in the results, and include filters so that only individuals caught on plot 1 or plot 2 and that weigh more than 75g are returned.
 
 ## <a name="missing"></a>Missing data
 
@@ -329,7 +337,8 @@ The computer is basically doing this:
 When we write queries, SQL dictates the query parts be supplied in a particular order: `SELECT`, `FROM`, `JOIN...ON`, `WHERE`, `GROUP BY`, `ORDER BY`. Note that this is not the same order in which the query is executed. (We'll get to `JOIN...ON` and `GROUP BY` in a bit.)
 
 
-***CHALLENGE 5: Update your query from Challenge 4 so that weight is displayed in kilograms and rounded to two decimal places. Only display results for female animals captured in 1999. Order the results alphabetically by the species ID.***
+> ####CHALLENGE 5
+> Update your query from Challenge 4 so that weight is displayed in kilograms and rounded to two decimal places. Only display results for female animals captured in 1999. Order the results alphabetically by the species ID.
 
 
 ## <a name="aggregation"></a> Aggregation
@@ -358,43 +367,36 @@ Now let's output this value in kilograms, rounded to 3 decimal places.
     FROM surveys
     WHERE species_id="DM";
 
+> #### CHALLENGE ??
+> Calculate the total, average, minimum, and maximum weights of the animals collected over the duration of the survey, then see if you can calculate these values only for animals that weighed between 5 and 10 g.
+
 Now, let's see how many individuals were counted in each species. We do this using a `GROUP BY` clause.
 
     SELECT species_id, COUNT(*)
     FROM surveys
     GROUP BY species_id;
 
-`GROUP BY` tells SQL what field or fields we want to use to aggregate the data. If we want to group by multiple fields, we give `GROUP BY` a comma separated list. Let's add in the year.
+`GROUP BY` tells SQL what field or fields we want to use to aggregate the data. If we want to group by multiple fields, we give `GROUP BY` a comma separated list.
 
-	SELECT species_id, year, COUNT(*)
-    FROM surveys
-    GROUP BY species_id, year;
-
-We can order the results of our aggregation by a specific column, including the aggregated column. Let’s order by the count in descending order, so the ones with the highest count are at the top of the list.
-
-	SELECT species_id, year, COUNT(*)
-    FROM surveys
-    GROUP BY species_id, year
-    ORDER BY COUNT(*) DESC;
-
-Let's modify this to show us the average weight for each species identified during each year, and how many total individuals there were for each of those species.
+> #### CHALLENGE ??
+> Identify how many animals were counted in each year total.
+> Identify how many animals were counted in each year per species.
+> Identify the average weight of each species in each year.
+> Now try to combine the above queries to list how many and the average weight for each species in each year.
 
 	SELECT species_id, year, COUNT(*), AVG(weight)
-    FROM surveys
-    GROUP BY species_id, year
-    ORDER BY COUNT(*) DESC;
+	FROM surveys
+	GROUP BY species_id, year;
 
-And now let's make the output a little more readable:
+We saw earlier that `WHERE` allows us to filter results according to some criteria. We can filter results based on aggregate functions as well, using the keyword `HAVING`.
 
-	SELECT species_id AS 'Species ID',
-		year AS 'Year',
-		COUNT(*) AS 'Total Individuals',
-		AVG(weight) AS 'Average weight (g)'
-    FROM surveys
-    GROUP BY species_id, year
-    ORDER BY COUNT(*) DESC;
+For example, we can adapt the last query we wrote to only return information about species with a count higher than 10:
 
-***CHALLENGE 6: Write a query to determine how many of each sex were counted in each species. Ignore the records with no sex indicated. Then, expanding on this query, list the weight of the largest animal in each category. Ignore the records that do not have weight indicated. What species ID is the largest female and how much does she weigh?***
+		SELECT species_id, COUNT(*)
+		FROM surveys
+		GROUP BY species_id
+		HAVING COUNT(*)>10;
+
 
 ## <a name="joins"></a> Joins
 
@@ -402,43 +404,62 @@ To combine data from two tables we use the SQL `JOIN` command, which comes after
 
 We will also need to use the keyword `ON` to tell the computer which columns provide the link ([Primary Key > Foreign Key](#design)) between the two tables. In this case, the species_id column in the **species** table is defined as the primary key. It contains the same data as the **survey** table's species_id column, which is the foreign key in this case.  We want to join the tables on these species_id fields.
 
-    SELECT surveys.species_id AS 'Species ID',
-		year AS 'Year',
-		COUNT(*) AS 'Total Individuals',
-		AVG(weight) AS 'Average weight (g)'
-    FROM surveys
-    JOIN species ON surveys.species_id = species.species_id
-    GROUP BY surveys.species_id, year
-    ORDER BY COUNT(*) DESC;
+		SELECT *
+		FROM surveys
+		JOIN species
+		ON surveys.species_id = species.species_id
 
 `ON` is kind of like `WHERE`, in that it filters things out according to a test condition. We use the table.colname format to tell the software what column in which table we are referring to.
 
 Field names that are identical in both tables can confuse the software so you must specify which table you are talking about, any time you mention these fields. You do this by inserting the table name in front of the field name as *table.colname*, as I have done above in the `SELECT` and `GROUP BY` parts of the query.
 
-And if you get tired of typing all those table names over and over, you can define an abbreviation for them by simply typing it immediately following the table names in the `FROM` and `JOIN` parts of the statements. Note that you can use the abbreviation in the `SELECT` part of the statement even though you don't define it until after that. (Why do you think that is? Hint: see the section above on the order of operations.)
+We often won't want all of the fields from both tables, so anywhere we would have used a field name in a query on a single table, we can use table.colname in our join.
 
-    SELECT u.species_id AS 'Species ID',
-		year AS 'Year',
-		COUNT(*) AS 'Total Individuals',
-		AVG(weight) AS 'Average weight (g)'
-    FROM surveys u
-    JOIN species p ON u.species_id = p.species_id
-    GROUP BY u.species_id, year
-    ORDER BY COUNT(*) DESC;
+For example, what if we wanted information on when individuals of each species were captured, but instead of their species ID, we wanted their actual species names.
 
-***CHALLENGE 7: Write a query that returns the genus, the species, and the weight of every individual captured at the site.***
+		SELECT surveys.year, surveys.month, surveys.day, species.genus, species.species
+		FROM surveys
+		JOIN species
+		ON surveys.species_id = species.species_id;
+
+> #### CHALLENGE 7
+> Identify the genus, species, and weight of every individual captured at the site.***
+
+
+We can count the number of records returned by our original `JOIN` query.
+
+		SELECT *
+		FROM surveys
+		JOIN species
+		ON surveys.species_id = species.species_id
+
+Notice that this number is smaller than the number of records present in the survey data.
+
+This is because, by default, SQL only returns records where the joining value is present in the join columns of both tables (i.e. it takes the intersection of the two join columns). This joining behavior is known as an `INNER JOIN` (this term can be used interchangeably with `JOIN`).
+
+We can also tell the computer that we wish to keep all the records in the first table by using the command `LEFT OUTER JOIN` or `LEFT JOIN` for short.
+
+> #### CHALLENGE ??
+> Rewrite the join above to keep all the entries present in the `surveys` table. How many records are returned by this query?
+
+Joins can also be combined with sorting, filtering, and aggregation. So, if we wanted average mass of the individuals on each different type of treatment, we could do something liek
+
+		SELECT plots.plot_type, AVG(survey.weight)
+		FROM surveys
+		JOIN plots
+		ON surveys.plot_id = plots.plot_id
+		GROUP BY plots.plot_type;
+
+> #### CHALLENGE ??
+> How many of each genus were caught in each plot? Report the answer with the greatest number at the top of the list.
 
 You can also combine many tables using a join. The query must include enough `JOIN`...`ON` clauses to link all of the tables together. In the query below, we are now looking at the count of each species for each type of plot during each year. This required 1) adding in an extra `JOIN`...`ON` clause, 2) including plot_type in the `SELECT` portion of the statement, and 3) adding plot_type to the `GROUP BY` function:
 
-    SELECT u.species_id AS 'Species ID',
-		year AS 'Year',
-		plot_type AS 'Plot Type',
-		COUNT(*) AS 'Total Individuals',
-		AVG(weight) AS 'Average weight (g)'
-    FROM surveys u
-    JOIN species p ON u.species_id = p.species_id
-    JOIN plots o ON o.plot_id = u.plot_id
-    GROUP BY u.species_id, year, plot_type
+    SELECT surveys.species_id, surveys.year, plots.plot_type, COUNT(*), surveys.AVG(weight)
+    FROM surveys
+    JOIN species ON surveys.species_id = species.species_id
+    JOIN plots ON plots.plot_id = surveys.plot_id
+    GROUP BY surveys.species_id, year, plot_type
     ORDER BY COUNT(*) DESC;
 
 ***CHALLENGE 8: Expand the query above to include the plot type and average weights (rounded to two decimal places) for each species/plot type combination. Order the output from the lowest weight to the highest. Exclude all records that don't have weight values recorded. Optional: use table name abbreviations and make the output easier to read.***
