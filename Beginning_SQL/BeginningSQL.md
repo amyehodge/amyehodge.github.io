@@ -52,10 +52,15 @@ simplified it a little bit for the workshop, but you can download the
 [full dataset](http://esapubs.org/archive/ecol/E090/118/) and work with it using
 exactly the same tools we'll learn about today.
 
-> **CHALLENGE 1:** Open each of the csv files and explore them. What information is contained in each file? What would you need to answer the following research questions? Which files have the data you would need? What operations would you need to perform if you were doing these analyses from these csv files?
+---
+
+> **CHALLENGE 1:**
+Open each of the csv files and explore them. What information is contained in each file? What would you need to answer the following research questions? Which files have the data you would need? What operations would you need to perform if you were doing these analyses from these csv files?
 * How has the hindfoot length and weight of *Dipodomys* species changed over time?
 * What is the average weight of each species, per year?
-* What information can I learn about *Dipodomys* species in the 2000s, over time?***
+* What information can I learn about *Dipodomys* species in the 2000s, over time?
+
+---
 
 ## <a name="import"></a> Import data into SQLite
 
@@ -99,16 +104,21 @@ When asked if you want to modify the table, click **OK** and then set the data t
 | surveys | weight | real |    
 
 
-![Defining data types](http://amyehodge.github.io/Beginning_SQL/images/BSQL2.png "Defining data types")
+![Defining data types](http://amyehodge.github.io/Beginning_SQL/images/BSQL2b.png "Defining data types")
 
 Once the data has been imported, the panel on the left will display a list of the tables under the heading "Tables."
 
 To see the contents of a table, click on that table and then click on the Browse
 and search tab in the right hand section of the screen.
 
-![Contents of species table](http://amyehodge.github.io/Beginning_SQL/images/BSQL3.png "Contents of species table")
+![Contents of species table](http://amyehodge.github.io/Beginning_SQL/images/BSQL3b.png "Contents of species table")
 
-***CHALLENGE 0: Import the species and surveys tables using the information provided in the table below.***
+---
+
+> **CHALLENGE 2:**
+Import the plots and surveys tables using the information provided in the table below.
+
+---
 
 | Table | Column | Data Type |
 | :------|:------|:------|
@@ -148,6 +158,7 @@ You can also use this same approach to append new data to an existing table.
   * If we change the data we can rerun the query
 * It's fast for large amounts of data.
 * It improves quality control of data entry: it's possible to constrain types, which is especially easy if you use forms available in database programs like Access, Filemaker, etc.
+* The concepts of relational database querying are core to understanding how to do similar things using programming languages such as R or Python.
 
 ## <a name="dbms"></a> Database management systems
 

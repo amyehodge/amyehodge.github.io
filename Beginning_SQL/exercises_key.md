@@ -1,6 +1,17 @@
-# Answers to Exercises
+# Answers to Challenges
 
-#### Exercise 1
+#### Challenge 1
+In order to answer the questions, you will need to do the following basic data operations:
+* select subsets of the data (rows and columns)
+* group subsets of data
+* do calculations
+* combine data across tables
+
+Instead of searching for the right peices of data ourselves, or clicking between tables, or manually sorting columns, we want to have the computer do this work for us. We also want to make it easy to repeat our analysis in case our data changes and we would prefer not to be modifying our source data when we do these analyses.
+
+Putting our data in a relational database will help us achieve these goals.
+
+#### Challenge 1
 Write a query that returns the year, month, day, species ID, and weight.
 
 ```
@@ -8,8 +19,8 @@ SELECT year, month, day, species_id, weight
 FROM surveys;
 ```
 
-#### Exercise 2
-Update your query from Exercise 1 to include plot ID in the results, and include filters so that only individuals caught on plot 1 or plot 2 and that weigh more than 75g are returned.
+#### Challenge 2
+Update your query from Challenge 1 to include plot ID in the results, and include filters so that only individuals caught on plot 1 or plot 2 and that weigh more than 75g are returned.
 
 ```
 SELECT year, month, day, species_id, plot_id, weight  
@@ -17,7 +28,7 @@ FROM surveys
 WHERE (plot_id=1 OR plot_id=2) AND (weight > 75);
 ```
 
-#### Exercise 3
+#### Challenge 3
 Write a query to determine the average weight of the individuals in records 1, 63, and 64. How are null values treated?
 
 ```
@@ -36,8 +47,8 @@ WHERE record_id IN (1, 63, 64);
 
 The null values are ignored in the calculation. The average weight reported is the average of the two records that have values: (40 + 48)/2.
 
-#### Exercise 4
-Update your query from Exercise 2 so that the results are ordered first by plot (ascending) and then lists the individuals in order from the biggest to the smallest.
+#### Challenge 4
+Update your query from Challenge 2 so that the results are ordered first by plot (ascending) and then lists the individuals in order from the biggest to the smallest.
 
 ```
 SELECT year, month, day, species_id, plot_id, weight  
@@ -46,8 +57,8 @@ WHERE (plot_id=1 OR plot_id=2) AND (weight > 75)
 ORDER BY plot_id ASC, weight DESC;
 ```
 
-#### Exercise 5
-Update your query from Exercise 4 so that weight is displayed in kilograms and rounded to two decimal places. Only display results for female animals captured in 1999. Order the results alphabetically by the species ID.
+#### Challenge 5
+Update your query from Challenge 4 so that weight is displayed in kilograms and rounded to two decimal places. Only display results for female animals captured in 1999. Order the results alphabetically by the species ID.
 
 ```
 SELECT year, month, day, species_id, plot_id, ROUND(weight/1000.0, 2)
@@ -56,7 +67,7 @@ WHERE sex="F" AND year=1999
 ORDER BY species_id ASC;
 ```
 
-#### Exercise 6
+#### Challenge 6
 Write a query to determine how many of each sex were counted in each species. Ignore the records with no sex indicated.
 
 ```
@@ -76,7 +87,7 @@ GROUP BY species_id,sex
 ORDER BY sex, MAX(weight) DESC;
 ```
 
-#### Exercise 7
+#### Challenge 7
 Write a query that returns the genus, the species, and the weight of every individual captured at the site.
 
 ```
@@ -85,7 +96,7 @@ FROM surveys
 JOIN species ON surveys.species_id = species.species_ID;
 ```
 
-#### Exercise 8
+#### Challenge 8
 Expand the query above to include the plot type and average weights (rounded to two decimal places) for each species/plot type combination. Order the output from the lowest weight to the highest. Exclude all records that don't have weight values recorded. Optional: use table name abbreviations and make the output easier to read.
 
 ```
@@ -112,7 +123,7 @@ GROUP BY plot_type, sp.species_id
 ORDER BY AVG(weight);
 ```
 
-#### Exercise 9
+#### Challenge 9
 Write a query using a set operator to identify all the species (by genus, species, and species_id) found in 1977 but not in 2002.
 
 ```
