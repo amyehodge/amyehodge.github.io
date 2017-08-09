@@ -28,9 +28,9 @@ This workshop will teach the basics of working with and querying structured data
 
 ## <a name="software"></a> Software and data setup
 
-> *If you are using one of the Library's laptops, skip this section.*
+*If you are using one of the Library's laptops, skip this section.*
 
-1. [Download Firefox] (https://www.mozilla.org/en-US/firefox/new/) and install it.
+1. [Download Firefox](https://www.mozilla.org/en-US/firefox/new/) and install it.
 2. Download and install the SQLite Manager add on: **Menu (the three horizontal lines near the
 top right corner of Firefox) -> Add-ons -> Search -> SQLite
 Manager -> Install -> Restart now**
@@ -52,7 +52,7 @@ simplified it a little bit for the workshop, but you can download the
 [full dataset](http://esapubs.org/archive/ecol/E090/118/) and work with it using
 exactly the same tools we'll learn about today.
 
-***CHALLENGE 1: Open each of the csv files and explore them. What information is contained in each file? What would you need to answer the following research questions? Which files have the data you would need? What operations would you need to perform if you were doing these analyses from these csv files?
+> **CHALLENGE 1:** Open each of the csv files and explore them. What information is contained in each file? What would you need to answer the following research questions? Which files have the data you would need? What operations would you need to perform if you were doing these analyses from these csv files?
 * How has the hindfoot length and weight of *Dipodomys* species changed over time?
 * What is the average weight of each species, per year?
 * What information can I learn about *Dipodomys* species in the 2000s, over time?***
@@ -73,12 +73,12 @@ We can import our data in one of two ways:
 1. Start a New Database by selecting **Database -> New Database**
 2. Name your database and save it to the desktop
 3. Import your data tables into your database by selecting **Database -> Import**
-4. Click on the **Select File** and choose the plots.csv file
+4. Click on the **Select File** and choose the surveys.csv file
 5. Give the table a name (or use the default)
 6. If the the file has column headings in the first row, check the appropriate box (our tables have column headings in the first row)
 7. Make sure the delimiter and quotation options are correct (our tables use a comma delimiter and double quotes)
 
-![Setting import options](http://amyehodge.github.io/Beginning_SQL/images/BSQL1.png "Setting import options")  
+![Setting import options](http://amyehodge.github.io/Beginning_SQL/images/BSQL1b.png "Setting import options")  
 
 Click **OK**.
 
@@ -86,10 +86,17 @@ When asked if you want to modify the table, click **OK** and then set the data t
 
 ##### Data types for each column (field)
 
-| Table | Column | Data Type | Other features |
-| ------|------|------|------ |
-| plots | plot_id |integer | primary key, unique |
-| plots | plot_type | text |
+| Table | Column | Data Type |
+| :------| :------| :------|
+| surveys | record_id | integer |  
+| surveys | month | integer |  
+| surveys | day | integer |  
+| surveys | year | 	integer	 |  
+| surveys | plot_id | integer |  
+| surveys | species_id | text |   
+| surveys | sex | text |
+| surveys | hindfoot_length | real |  
+| surveys | weight | real |    
 
 
 ![Defining data types](http://amyehodge.github.io/Beginning_SQL/images/BSQL2.png "Defining data types")
@@ -103,21 +110,15 @@ and search tab in the right hand section of the screen.
 
 ***CHALLENGE 0: Import the species and surveys tables using the information provided in the table below.***
 
-| Table | Column | Data Type | Other features |
-| :------|:------|:------|:------ |
-| species | species_id | text | primary key, unique |
-| species | genus | text |  |
-| species | species | text | 	 |
-| species | taxa | text |  |
-| surveys | record_id | integer | primary key, unique |
-| surveys | month | integer |  |
-| surveys | day | integer |  |
-| surveys | year | 	integer	 |  |
-| surveys | plot_id | integer |  |
-| surveys | species_id | text | allow null  |
-| surveys | sex | text | allow null |
-| surveys | hindfoot_length | real | allow null |
-| surveys | weight | real | allow null |
+| Table | Column | Data Type |
+| :------|:------|:------|
+| plots | plot_id |integer |
+| plots | plot_type | text |  
+| species | species_id | text |
+| species | genus | text |  
+| species | species | text | 	 
+| species | taxa | text |    
+
 
 You can also use this same approach to append new data to an existing table.
 
