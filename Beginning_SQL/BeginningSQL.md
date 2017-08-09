@@ -56,9 +56,9 @@ exactly the same tools we'll learn about today.
 
 > **CHALLENGE 1:**
 Open each of the csv files and explore them. What information is contained in each file? What would you need to answer the following research questions? Which files have the data you would need? What operations would you need to perform if you were doing these analyses from these csv files?
-* How has the hindfoot length and weight of *Dipodomys* species changed over time?
-* What is the average weight of each species, per year?
-* What information can I learn about *Dipodomys* species in the 2000s, over time?
+> * How has the hindfoot length and weight of *Dipodomys* species changed over time?
+> * What is the average weight of each species, per year?
+> * What information can I learn about *Dipodomys* species in the 2000s, over time?
 
 ---
 
