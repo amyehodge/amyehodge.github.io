@@ -52,7 +52,7 @@ simplified it a little bit for the workshop, but you can download the
 [full dataset](http://esapubs.org/archive/ecol/E090/118/) and work with it using
 exactly the same tools we'll learn about today.
 
-> **CHALLENGE 1:**
+> #### CHALLENGE 1
 Open each of the csv files and explore them. What information is contained in each file? What would you need to answer the following research questions? Which files have the data you would need? What operations would you need to perform if you were doing these analyses from these csv files?
 > * How has the hindfoot length and weight of *Dipodomys* species changed over time?
 > * What is the average weight of each species, per year?
@@ -109,12 +109,9 @@ and search tab in the right hand section of the screen.
 
 ![Contents of species table](http://amyehodge.github.io/Beginning_SQL/images/BSQL3b.png "Contents of species table")
 
----
+> #### CHALLENGE 2
+> Import the plots and surveys tables using the information provided in the table below.
 
-> **CHALLENGE 2:**
-Import the plots and surveys tables using the information provided in the table below.
-
----
 
 | Table | Column | Data Type |
 | :------|:------|:------|
