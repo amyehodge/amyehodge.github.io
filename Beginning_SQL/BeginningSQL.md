@@ -35,7 +35,6 @@ top right corner of Firefox) -> Add-ons -> Search -> SQLite
 Manager -> Install -> Restart now**
 4. Add SQLite Manager to the menu: **Menu -> Customize, then drag the SQLite Manager icon to one of the empty menu squares on the right, Exit Customize**
 3. Download the [Portal Database](https://ndownloader.figshare.com/files/2292171) as well as the individual csv files for [plots](https://ndownloader.figshare.com/files/3299474), [species](https://ndownloader.figshare.com/files/3299483), and [surveys](https://ndownloader.figshare.com/files/2292172).   
-	* Note that in the .sqlite database file the surveys table has a field called `plot` that in the surveys.csv file is called `plot_id`. We will use the .sqlite file in the workshop. If you choose to import the individual .csv files and follow along with this lesson, you will need to adjust this field name in your queries.
 5. Open SQLite Manager: **Menu -> SQLite Manager**
 
 ## <a name="dataset"></a> Dataset description
@@ -64,7 +63,7 @@ We can import our data in one of two ways:
 1. Import the .sqlite database file  
 2. Import the individual tables  
 
-### Import the database file
+### Import the .sqlite database file
 
 1. Select **Database -> Connect Database**
 2. Choose the portal_mammals.sqlite file
