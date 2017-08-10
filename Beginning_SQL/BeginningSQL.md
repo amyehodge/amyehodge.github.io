@@ -624,7 +624,8 @@ See if you can understand how this query works, even without the database tables
 	WHERE   
 		publishdate BETWEEN "2009-05-01 00:00:00" AND "2009- 12-31 23:59:59"   
 		AND   
- 		((LOWER(`title`) LIKE "%swine flu%" OR LOWER(`title`) LIKE "%swineflu%" OR LOWER(`title`) LIKE "%h1n1%"))   
+ 		((LOWER(`title`) LIKE "%swine flu%" OR LOWER(`title`) LIKE "%swineflu%" OR
+		LOWER(`title`) LIKE "%h1n1%"))   
  		AND   
  		((LOWER(`title`) NOT LIKE "%rt @%"   
  		AND   
