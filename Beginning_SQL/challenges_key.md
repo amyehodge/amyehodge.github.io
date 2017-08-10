@@ -16,7 +16,9 @@ In order to answer the questions, you will need to do the following basic data o
 * do calculations
 * combine data across tables
 
-Instead of searching for the right pieces of data ourselves, or clicking between tables, or manually sorting columns, we want to have the computer do this work for us. We also want to make it easy to repeat our analysis in case our data changes and we would prefer not to be modifying our source data when we do these analyses.
+Instead of searching for the right pieces of data ourselves, or clicking between tables, or manually sorting columns,
+we want to have the computer do this work for us. We also want to make it easy to repeat our analysis in case our data
+changes and we would prefer not to be modifying our source data when we do these analyses.
 
 Putting our data in a relational database will help us achieve these goals.
 ```
@@ -69,17 +71,15 @@ Write a query to determine the average weight of the individuals in records 1, 6
 SELECT AVG(weight)
 FROM surveys
 WHERE record_id IN (1, 63, 64);
-```
 
 To see what the values are for the three records being averaged:
 
-```
 SELECT record_id, weight
 FROM surveys
 WHERE record_id IN (1, 63, 64);
-```
 
 The `NULL` values are ignored in the calculation. The average weight reported is the average of the two records that have values: (40 + 48)/2.
+```
 
 #### Challenge 8
 Alphabetize the **species** table by genus and then species.
@@ -94,12 +94,12 @@ ORDER BY genus ASC, species ASC;
 Calculate the total, average, minimum, and maximum weights of the animals collected over the duration of the survey, then see if you can calculate these values only for animals that weighed between 5 and 10 g.
 
 ```
-SELECT  SUM(weight), AVG(weight), MIN(weight), MAX(weight)  
+SELECT SUM(weight), AVG(weight), MIN(weight), MAX(weight)  
 FROM surveys;
 ```
 
 ```
-SELECT  SUM(weight), AVG(weight), MIN(weight), MAX(weight)  
+SELECT SUM(weight), AVG(weight), MIN(weight), MAX(weight)  
 FROM surveys
 WHERE weight > 5 AND weight < 10;
 ```
@@ -165,9 +165,9 @@ SELECT species.genus, species.species, surveys.weight
 FROM surveys
 LEFT JOIN species
 ON surveys.species_id = species.species_id;
-```
-This query returns 35,549 records. This is the as the number of records in the surveys table, as it should be.
 
+This query returns 35,549 records. This is the as the number of records in the surveys table, as it should be.
+```
 
 #### Challenge 14
 How many of each genus were caught in each plot? Report the answer with the greatest number at the top of the list.
@@ -242,9 +242,9 @@ ON surveys.species_id=species.species_id
 WHERE species.taxa = 'Rodent' AND surveys.sex IS NOT NULL
 GROUP BY surveys.species_id, surveys.sex
 ORDER BY surveys.species_id;
-```
 
 `ORDER BY` helps us be able to scan for differences, though graphing the output (and calculating standard deviation) would be even better.
+```
 
 7. What is the average weight of each rodent species over the course of the years? Is there any noticeable trend for any of the species?
 
@@ -256,9 +256,9 @@ ON surveys.species_id=species.species_id
 WHERE species.taxa = 'Rodent'
 GROUP BY surveys.species_id, surveys.year
 ORDER BY surveys.species_id;
-```
 
 Again, `ORDER BY` helps with trying to get a feel for trends, but graphing would make this much easier to see.
+```
 
 8. What is the percentage of each species in each taxa? (Hint: Start by determining how many of each species there are in each taxa and then see if you can figure out how to report the percentages. Why do the numbers not add up to 100%?)
 
@@ -268,6 +268,6 @@ FROM surveys
 JOIN species
 ON surveys.species_id=species.species_id
 GROUP BY taxa;
-```
 
 The numbers do not add up to 100% because the JOIN excludes the entries from the surveys table where the species was not recorded, but those entries ARE included in the percentage calculation (`SELECT COUNT(*) FROM surveys`). If you want to include the entries without a species in the results, use a `LEFT JOIN`. If you want to continue to exclude those but make the results add up to 100%, use a filter to exclude them from the percentage calculation (`SELECT COUNT(*) FROM surveys WHERE species IS NOT NULL`).
+```
