@@ -13,17 +13,17 @@ This workshop will teach the basics of working with and querying structured data
 7. [Basic queries](#basic), including [Unique values](#unique) and [Calculated values](#calculated)
 8. [Filtering](#filtering)
 9. [Missing data](#missing)
-11. [Sorting](#sort)
-12. [Order of execution vs order of query](#order)
-13. [Aggregation](#aggregation)
-15. [Joins](#joins)
-16. [Data types](#datatypes)
-18. [Real life examples](#real): [schema](#schema) and [query](#query)
-19. [Commenting your queries](#comment)  
-20. [Exporting & saving query results](#exportsave)  
-21. [Saving queries in SQLite Manager](#saving)
-22. [Running sqlite3 from the command line](#command)  
-23. [Resources](#resources)
+10. [Sorting](#sort)
+11. [Order of execution vs order of query](#order)
+12. [Aggregation](#aggregation)
+13. [Joins](#joins)
+14. [Data types](#datatypes)
+15. [Commenting your queries](#comment)  
+16. [Exporting & saving query results](#exportsave)  
+17. [Saving queries in SQLite Manager](#saving)
+18. [Running sqlite3 from the command line](#command)  
+19. [Real life examples](#real): [schema](#schema) and [query](#query)
+20. [Resources](#resources)
 
 ## <a name="software"></a> Software and data setup
 
@@ -52,10 +52,11 @@ exactly the same tools we'll learn about today.
 
 > #### CHALLENGE 1
 > Open each of the csv files and explore them. What information is contained in each file? If you had the following research questions:
-> * How has the hindfoot length and weight of *Dipodomys* species changed over time?
-> * What is the average weight of each species, per year?
-> * What information can I learn about *Dipodomys* species in the 2000s, over time?
-What would you need to answer these questions? Which files have the data you would need? What operations would you need to perform if you were doing these analyses from these csv files?
+> * How many specimens of each species were captured in each type of plot?
+> * What are the minimum, maximum, and average weight for each species of rodent?
+> * What is the average weight of each rodent species over the course of the years? Is there any noticeable trend for any of the species?
+>
+> What would you need to answer these questions? Which files have the data you would need? What operations would you need to perform if you were doing these analyses from these csv files?
 
 ## <a name="import"></a> Import data into SQLite
 
@@ -370,10 +371,10 @@ Now, let's see how many individuals were counted in each species. We do this usi
 `GROUP BY` tells SQL what field or fields we want to use to aggregate the data. If we want to `GROUP BY` by multiple fields, we give `GROUP BY` a comma separated list.
 
 > #### CHALLENGE 10
-> * Identify how many animals were counted in each year total.
-> * Identify how many animals were counted in each year per species.
-> * Identify the average weight of each species in each year.
-> * Now try to combine the above queries to list how many and the average weight for each species in each year.
+> 1. Identify how many animals were counted in each year total.
+> 2. Identify how many animals were counted in each year per species.
+> 3. Identify the average weight of each species in each year.
+> 4. Now try to combine the above queries to list how many and the average weight for each species in each year.
 
 We saw earlier that `WHERE` allows us to filter results according to some criteria. We can filter results based on aggregate functions as well, using the keyword `HAVING`.
 
@@ -457,14 +458,14 @@ You can also combine many tables using a `JOIN`. The query must include enough `
 >
 > Have a look at the following questions; these questions are written in plain English. Can you translate them to SQL queries and give a suitable answer?  
 >
-> 1. How many plots from each type are there?  
-> 2. How many specimens are of each sex are there for each year?  
-> 3. How many specimens of each species were captured in each type of plot?  
+> 1. How many plots of each treatment type are there?  
+> 2. How many male and female specimens were identified each year? We aren't interested in cases where the sex is not known.
+> 3. How many specimens of each species were captured in each type of plot? We aren't interested if the species isn't known.
 > 4. What is the average weight of each taxa?  
-> 5. What is the percentage of each species in each taxa?  
-> 6. What are the minimum, maximum and average weight for each species of rodent?  
-> 7. What is the average hindfoot length for male and female rodent of each species? Is there a male/female difference?  
-> 8. What is the average weight of each rodent species over the course of the years? Is there any noticeable trend for any of the species?  
+> 5. What are the minimum, maximum, and average weight for each species of rodent?  
+> 6. What is the average hindfoot length for male and female rodent of each species? Is there a male/female difference?  
+> 7. What is the average weight of each rodent species over the course of the years? Is there any noticeable trend for any of the species?  
+> 8. What is the percentage of each species in each taxa? (Hint: Start by determining how many of each species there are in each taxa and then see if you can figure out how to report the percentages. Why do the numbers not add up to 100%?)
 
 
 ## <a name="datatypes"></a> Data types
