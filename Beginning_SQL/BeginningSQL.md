@@ -166,13 +166,13 @@ Let’s write a SQL query that selects only the year column from the **surveys**
 
     SELECT year FROM surveys;
 
-This is called a "SELECT statement." We have capitalized the words `SELECT` and `FROM` because they are SQL keywords. SQL is case insensitive, but capitalizing helps with readability and is considered a best practice for SQL. In addition, every query must end in a semicolon. This is how the software knows this is the end of the query.
+We have capitalized the words `SELECT` and `FROM` because they are SQL keywords. SQL is case insensitive, but capitalizing helps with readability and is good style for SQL. When running queries from the command line or a script file, the queries must end in a semicolon. This is how the software knows this is the end of the query. It's good practice to get in the habit of doing this, even though this interface does not require it.
 
-To run the query in SQLite, click on the RunSQL button that is underneath the text box. If you were doing this at a command-line interface, you would hit "enter."
+To run the query in SQLite, click on the RunSQL button that is underneath the text box. Alternatively, `Cmd` + `;` will also run the query.
 
 ![Run query](http://amyehodge.github.io/Beginning_SQL/images/BSQL6.png "Run query")
 
-If we want more information, we can add a new column to the list of fields that are listed immediately after `SELECT`.
+If we want more information, we can add a new column to the list of fields, right after `SELECT`.
 
     SELECT year, month, day FROM surveys;
 
@@ -193,7 +193,7 @@ If we select more than one column, then the distinct pairs of values are returne
 
     SELECT DISTINCT year, species_id FROM surveys;
 
-This is a good point to introduce another best practice for formatting SQL queries. It helps with readability if you separate the parts of the query onto separate lines. So the above query should be written:
+This is a good point to introduce another good style practice for SQL queries. It helps with readability if you separate the parts of the query onto separate lines. So, the above query is better written as:
 
     SELECT DISTINCT year, species_id
     FROM surveys;
@@ -205,7 +205,7 @@ We can also do calculations with the values in a query. For example, if we wante
     SELECT year, month, day, weight/1000
     FROM surveys;
 
-When we run the query, the expression `weight/1000` is evaluated for each row and appended to that row, in a new column. Note that if we had used the integer data type for weight and divided by the integer 1000, the results would have been reported as integers. In order to get more significant digits, you would need to include the decimal point so that SQL knows you want the results reported as floating point numbers.
+When we run the query, the expression `weight/1000` is evaluated for each row and appended to that row, in a new column. Note that if we had used the integer data type for weight and divided by the integer 1000, the results would have been reported as integers. In order to get more significant digits, you would need to include the decimal point (i.e. 1000.0) so that SQL knows you want the results reported as floating point numbers.
 
 Expressions can use any fields, any arithmetic operators (+ - * /) and a variety of built-in functions (`MAX`, `MIN`, `AVG`, `SUM`, `ROUND`, `UPPER`, `LOWER`, `LEN`, etc). For example, we could round the values to make them easier to read.
 
@@ -217,7 +217,7 @@ Expressions can use any fields, any arithmetic operators (+ - * /) and a variety
 
 ## <a name="filtering"></a> Filtering
 
-Databases can also filter data – selecting only the data meeting certain criteria. For example, let’s say we only want data for the species *[Dipodomys merriami](https://en.wikipedia.org/wiki/Merriam%27s_kangaroo_rat)*, which has a species code of DM. We need to add a `WHERE` clause to our query:
+Databases can also filter data – selecting only the data meeting certain criteria. For example, let’s say we only want data for the species *Dipodomys merriami*, which has a species code of DM. We need to add a `WHERE` clause to our query:
 
     SELECT *
     FROM surveys
@@ -229,19 +229,19 @@ We can do the same thing with numbers. Here, we only want the data since 2000:
     FROM surveys
     WHERE year >= 2000;
 
-We can use more sophisticated conditions by combining filters with AND as well as OR. For example, suppose we want the data on *Dipodomys merriami* starting in the year 2000, we ccan combine those filters using `AND`.
+We can use more sophisticated conditions by combining filters with AND as well as OR. For example, suppose we want the data on *Dipodomys merriami* starting in the year 2000, we can combine those filters using `AND`.
 
     SELECT *
     FROM surveys
     WHERE (year >= 2000) AND (species_id = "DM");
+
+Note that the parentheses aren’t needed in this case, but they help with readability.
 
 If we wanted get data for any of the *Dipodomys* species, which have species IDs of DM, DO, and DS, we can combine those using `OR`.
 
 		SELECT *
 		FROM surveys
 		WHERE (species_id = "DM") OR (species_id = "DO") OR (species_id = "DS");
-
-Note that the parentheses aren’t needed in this case, but again, they help with readability. They also ensure that the computer combines `AND` and `OR` in the way that we intend. (`AND` takes precedence over `OR` and will be evaluated before `OR`.)
 
 The above query is getting kind of long, so let's use a shortcut for all those `OR`s. This time, let’s use `IN` as one way to make the query easier to understand. `IN` is equivalent to saying `WHERE (species_id = "DM") OR (species_id = "DO") OR (species_id = "DS")`, but reads more neatly:
 
@@ -252,26 +252,28 @@ The above query is getting kind of long, so let's use a shortcut for all those `
 > #### CHALLENGE 5
 > Produce a table listing the data for all individuals in Plot 1 that weighed more than 75 grams, telling us the date, species ID, and weight (in kg).
 
-Going back to the evaluation of `AND` and `OR`, if we wanted to get all the records from before 1980 or from 2000 or later that were about species DM, we might be inclined to write the query this way:
+Continuing with the evaluation of `AND` and `OR`, if we wanted to get all the records from before 1980 or from 2000 or later that were about species DM, we might be inclined to write the query this way:
 
 	SELECT *
 	FROM surveys
 	WHERE year < 1980 OR year >=2000 AND species_id="DM";
 
-However, the program will evaluate `AND` first and then `OR`, which would give us all records for DM from 2000 or later, combined with all records from before 1980 for any species. The correct way to write this query would be this:
+However, because `AND` takes logical precendence over `OR`, the program will evaluate `AND` first and then `OR`, which would give us all records for DM from 2000 or later, combined with all records from before 1980 for any species. The correct way to write this query would be this:
 
 	SELECT *
 	FROM surveys
 	WHERE (year < 1980 OR year >=2000) AND species_id="DM";
 
+The parentheses ensure that the computer combines `AND` and `OR` in the way that we intend.
+
 We started with something simple, then added more clauses one by one, testing their effects as we went along. For complex queries, this is a good strategy to make sure you are getting what you want. It also might be helpful to create a subset of the data that you can easily see in a temporary database to practice your queries on before working on a larger or more complicated database.
 
 > #### CHALLENGE 6
-> Update your query from Challenge 1 to include plot ID in the results, and include filters so that only individuals caught on plot 1 or plot 2 and that weigh more than 75g are returned.
+> Identify the species ID, weight, and plot ID for each survey item, and include filters so that only individuals caught on plot 1 or plot 2 and that weigh more than 75g are included.
 
 ## <a name="missing"></a>Missing data
 
-`NULL` can be used in queries to represent missing data (note that this is not the same as true or false or 0).
+`NULL` can be used in queries to represent missing data (note that `NULL` is not the same as 0).
 
 For example, to find all instances where the species_id was not entered, we can write this query:
 
@@ -286,7 +288,7 @@ Or to find all cases where a weight value was entered:
     WHERE weight IS NOT NULL;            
 
 > #### CHALLENGE 7
-> Write a query to determine the average weight of the individuals in records 1, 63, and 64. How are null values treated?***
+> Write a query to determine the average weight of the individuals in records 1, 63, and 64. How are null values treated?
 
 ## <a name="sort"></a> Sorting
 
@@ -314,15 +316,15 @@ We can also sort on several fields at once. Let's do by plot and then by species
     ORDER BY plot_id ASC, species_id DESC;
 
 > #### CHALLENGE 8
->Update your query from Challenge 2 so that the results are ordered first by plot (ascending) and then lists the individuals in order from the biggest to the smallest.***
+> Alphabetize the species table by genus and then species.
 
 ## <a name="order"></a>Order of execution vs. order of query
 
-Another note for ordering. We don’t actually have to display a column to sort by it. For example, let’s say we want to order by the plot ID and species ID, but we only want to see the date, plot, and weight information.
+We don’t actually have to display a column in our query output in order to use it for sorting that output. For example, let’s say we want to order by the plot ID and species ID, but we only want to see the date, plot, and weight information.
 
     SELECT day, month, year, plot_id, weight
     FROM surveys
-    WHERE (year < 1980 OR year >= 2000) AND (species_id IN ("DM", "DO", "DS"))
+    WHERE year < 1980 AND species_id IN ("DM", "DO", "DS")
     ORDER BY plot_id ASC, species_id DESC;
 
 We can do this because sorting occurs earlier in the computational pipeline than field selection.
@@ -334,13 +336,7 @@ The computer is basically doing this:
 3. Sorting results according to `ORDER BY`
 4. Displaying requested columns or expressions according to `SELECT`
 
-
 When we write queries, SQL dictates the query parts be supplied in a particular order: `SELECT`, `FROM`, `JOIN...ON`, `WHERE`, `GROUP BY`, `ORDER BY`. Note that this is not the same order in which the query is executed. (We'll get to `JOIN...ON` and `GROUP BY` in a bit.)
-
-
-> #### CHALLENGE 9
-> Update your query from Challenge 4 so that weight is displayed in kilograms and rounded to two decimal places. Only display results for female animals captured in 1999. Order the results alphabetically by the species ID.
-
 
 ## <a name="aggregation"></a> Aggregation
 
@@ -358,17 +354,11 @@ There are many other aggregate functions included in SQL including `SUM`, `MAX`,
 
 Something a little more useful might be finding the number and average weight of a particular species in our survey, like DM.
 
-	SELECT COUNT(*), AVG(weight)
+		SELECT COUNT(*), AVG(weight)
     FROM surveys
     WHERE species_id="DM";
 
-Now let's output this value in kilograms, rounded to 3 decimal places.
-
-    SELECT COUNT(*), ROUND(AVG(weight)/1000, 3)
-    FROM surveys
-    WHERE species_id="DM";
-
-> #### CHALLENGE 10
+> #### CHALLENGE 9
 > Calculate the total, average, minimum, and maximum weights of the animals collected over the duration of the survey, then see if you can calculate these values only for animals that weighed between 5 and 10 g.
 
 Now, let's see how many individuals were counted in each species. We do this using a `GROUP BY` clause.
@@ -379,15 +369,11 @@ Now, let's see how many individuals were counted in each species. We do this usi
 
 `GROUP BY` tells SQL what field or fields we want to use to aggregate the data. If we want to group by multiple fields, we give `GROUP BY` a comma separated list.
 
-> #### CHALLENGE 11
-> Identify how many animals were counted in each year total.
-> Identify how many animals were counted in each year per species.
-> Identify the average weight of each species in each year.
-> Now try to combine the above queries to list how many and the average weight for each species in each year.
-
-	SELECT species_id, year, COUNT(*), AVG(weight)
-	FROM surveys
-	GROUP BY species_id, year;
+> #### CHALLENGE 10
+> * Identify how many animals were counted in each year total.
+> * Identify how many animals were counted in each year per species.
+> * Identify the average weight of each species in each year.
+> * Now try to combine the above queries to list how many and the average weight for each species in each year.
 
 We saw earlier that `WHERE` allows us to filter results according to some criteria. We can filter results based on aggregate functions as well, using the keyword `HAVING`.
 
@@ -398,6 +384,8 @@ For example, we can adapt the last query we wrote to only return information abo
 		GROUP BY species_id
 		HAVING COUNT(*)>10;
 
+> #### CHALLENGE 11
+> Figure out how many different genera (that's the plural of genus!) there are in each taxa, but only for cases where there are 10 or more genera. List the taxa with the most genera at the top.
 
 ## <a name="joins"></a> Joins
 
@@ -410,11 +398,11 @@ We will also need to use the keyword `ON` to tell the computer which columns pro
 		JOIN species
 		ON surveys.species_id = species.species_id
 
-`ON` is kind of like `WHERE`, in that it filters things out according to a test condition. We use the table.colname format to tell the software what column in which table we are referring to.
+`ON` is kind of like `WHERE`, in that it filters things out according to a test condition. We use the `table.colname` format to tell the software what column in which table we are referring to.
 
-Field names that are identical in both tables can confuse the software so you must specify which table you are talking about, any time you mention these fields. You do this by inserting the table name in front of the field name as *table.colname*, as I have done above in the `SELECT` and `GROUP BY` parts of the query.
+Field names that are identical in both tables can confuse the software so you must specify which table you are talking about, any time you mention these fields. You do this by inserting the table name in front of the field name as `table.colname`, as I have done above in the `SELECT` and `GROUP BY` parts of the query.
 
-We often won't want all of the fields from both tables, so anywhere we would have used a field name in a query on a single table, we can use table.colname in our join.
+We often won't want all of the fields from both tables, so anywhere we would have used a field name in a query on a single table, we can use `table.colname` in our join.
 
 For example, what if we wanted information on when individuals of each species were captured, but instead of their species ID, we wanted their actual species names.
 
@@ -424,12 +412,12 @@ For example, what if we wanted information on when individuals of each species w
 		ON surveys.species_id = species.species_id;
 
 > #### CHALLENGE 12
-> Identify the genus, species, and weight of every individual captured at the site.***
+> Identify the genus, species, and weight of every individual captured at the site.
 
 
 We can count the number of records returned by our original `JOIN` query.
 
-		SELECT *
+		SELECT COUNT(\*)
 		FROM surveys
 		JOIN species
 		ON surveys.species_id = species.species_id
@@ -522,7 +510,7 @@ It is good practice to include comments in your queries so that you remember the
 
 Comments are ignored by the software and can be added in one of two ways.  
 
-Short comments can be added by including them after two consecutive dashes. A line return signals the end of the comment. In the query below, the comment "-- only data from plots 1 & 2" in the 7th line will be ignored.
+Short comments can be added by including them after two consecutive dashes. A line return signals the end of the comment. In the query below, the comment "-- only data from plots 1 & 2" in the 7th line will be ignored. These comments can also included on separate lines.
 
     SELECT p.genus,
     	p.species,  
@@ -544,8 +532,10 @@ Longer comments can be added and separated from the query text by enclosing them
     JOIN species p ON u.species_id=p.species_id
     WHERE (u.plot=1 OR u.plot=2) AND (u.weight > 75)
     GROUP BY p.species_id
-    /* I am grouping the results by species_id because I want to see the average weights and
-    total numbers separated out for the individual species*/
+    /* I am grouping the results by species_id because I want to see
+		average weights and
+    total numbers
+		separated out for the individual species*/
     ORDER BY p.species_id;
 
 Details about commenting code can be found in the [SQLite documentation](https://www.sqlite.org/lang_comment.html).
@@ -603,7 +593,7 @@ In order to do this you need to be in the shell (Terminal window on Mac), and yo
 
 Type `.help` at the prompt to see options available, or check out the more detailed explanation of most of your choices at the sqlite.org link above.   
 Type `.tables` to see a list of all your database tables.    
-Type any `SELECT` statement directly from the prompt. Be sure to end with a semicolon and hit `Return` to run the query.  
+Type any `SELECT` statement directly from the prompt. Be sure to end with a semicolon. That's how the computer knows you are at the end of the query. Hit `Enter` or `Return` after the semicolon to run the query.  
 Run a query from a .sql file (your query saved as a text document with a .sql file extension) by typing `.read` followed by a space and the file name.  
 Type `.mode csv` to change the standard output to .csv format (instead of delimited by pipes).    
 Type `.once` followed by a space and a file name to send the output from the next `.read` query to a file instead of to the screen.  
