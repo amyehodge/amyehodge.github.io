@@ -37,18 +37,18 @@ Select only the data meeting certain criteria:
 
     SELECT *
     FROM table_name
-    WHERE column_name = 'Hello World';
+    WHERE column_name = "Hello World";
 
 Combine conditions:
 
     SELECT *
     FROM table_name
-    WHERE (column_name_1 >= 1000) AND (column_name_2 = 'A' OR column_name_2 = 'B');
+    WHERE (column_name_1 >= 1000) AND (column_name_2 = "A" OR column_name_2 = "B");
 
 Simplify lists of conditions with `IN`:
 
-    SELECT * 
-    FROM table_name 
+    SELECT *
+    FROM table_name
     WHERE column_name IN ("A", "B", "C", "D");
 
 
@@ -65,7 +65,7 @@ Sort results using `ASC` for ascending order or `DESC` for descending order:
 Missing Data
 ------------
 
-`NULL` can be used in queries to represent missing data (note that this is not the same as true or false or 0).
+`NULL` can be used in queries to represent missing data (note that this is not the same as 0).
 
 
 Grouping and Aggregation
@@ -86,7 +86,7 @@ Join data from two tables:
     SELECT *
     FROM table_name_1
     JOIN table_name_2 ON table_name_1.column_name = table_name_2.column_name;
-    
+
 Joining data from multiple tables requires that enough `JOIN...ON` conditions be specified to link all the tables together.
 
 
@@ -95,13 +95,3 @@ Combining Commands
 
 SQL commands must be combined in the following order:
 `SELECT`, `FROM`, `JOIN`, `ON`, `WHERE`, `GROUP BY`, `ORDER BY`.
-
-
-Set Operators
--------------
-
-The set operators `UNION`, `UNION ALL`, `INTERSECT`, and `EXCEPT` can be used to compare the results from two `SELECT` statements.
-
-    SELECT statement 1
-    EXCEPT
-    SELECT statement 2 
