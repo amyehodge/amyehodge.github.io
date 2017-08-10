@@ -646,12 +646,11 @@ doi:10.1371/journal.pone.0014118.s001
 * Online tutorials  
 	* [W3 Schools](http://www.w3schools.com/sql/)  
 	* [SQLZOO](http://sqlzoo.net/)  
-	* [Codecademy](https://www.codecademy.com/courses/learn-sql)
+	* [Codecademy](https://www.codecademy.com/courses/learn-sql)  
 	* lynda.com training (free to everyone at Stanford!)  
 		* [Learning Relational Databases](http://www.lynda.com/Access-tutorials/Relational-Database-Fundamentals/145932-2.html)  
 		* [SQL Essential Training](http://www.lynda.com/SQL-tutorials/SQL-Essential-Training/139988-2.html)  
 		* [MySQL Essential Training](http://www.lynda.com/MySQL-tutorials/MySQL-Essential-Training/139986-2.html)  
 		* [Learning MySQL Development](http://www.lynda.com/MySQL-tutorials/Up-Running-MySQL-Development/158373-2.html)  
-
 	* [TutorialsPoint](http://www.tutorialspoint.com/sqlite/index.htm)  
-	* Or try some of the tutorials listed   [here](http://www.vertabelo.com/blog/notes-from-the-lab/18-best-online-resources-for-learning-sql-and-database).
+	* Or try some of the tutorials listed   [here](http://www.vertabelo.com/blog/notes-from-the-lab/18-best-online-resources-for-learning-sql-and-database).  
