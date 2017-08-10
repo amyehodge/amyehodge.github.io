@@ -286,7 +286,7 @@ Or to find all cases where a weight value was entered:
 
     SELECT *
     FROM surveys
-    WHERE weight IS NOT NULL;            
+    WHERE weight IS NOT NULL;
 
 > #### CHALLENGE 7
 > Write a query to determine the average weight of the individuals in records 1, 63, and 64. How are `NULL` values treated?
@@ -392,7 +392,7 @@ For example, we can adapt the last query we wrote to only return information abo
 
 To combine data from two tables we use the SQL `JOIN` command, which comes after the `FROM` command.
 
-We will also need to use the keyword `ON` to tell the computer which columns provide the link ([Primary Key > Foreign Key](#design)) between the two tables. In this case, the species_id column in the **species** table is defined as the primary key. It contains the same data as the **survey** table's species_id column, which is the foreign key in this case.  We want to join the tables on these species_id fields.
+We will also need to use the keyword `ON` to tell the computer which columns provide the link ([Primary Key > Foreign Key](#design)) between the two tables. In this case, the species_id column in the **species** table is defined as the primary key. It contains the same data as the **survey** table's species_id column, which is the foreign key in this case. We want to join the tables on these species_id fields.
 
 		SELECT *
 		FROM surveys

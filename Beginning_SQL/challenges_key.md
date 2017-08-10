@@ -24,6 +24,10 @@ Putting our data in a relational database will help us achieve these goals.
 #### Challenge 2
 Import the **plots** and **species** tables using the information provided in the table below.
 
+```
+Follow the step-by-step instructions given in the lesson for this task.
+```
+
 #### Challenge 3
 Identify the species ID and weight for each survey item and the date on which it was recorded.
 
