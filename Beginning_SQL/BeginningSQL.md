@@ -616,7 +616,8 @@ This is an actual query used in an analysis of Twitter data. The goal of the res
 See if you can understand how this query works, even without the database tables. We covered all of this in our lesson!
 
 	SELECT   
-		DISTINCT T.title, T.tweetid, T.id, T.publishdate, T.link, T.content, T.updatedate, T.authorname, T.authoruri, W.webcite_id, W.long_url,  
+		DISTINCT T.title, T.tweetid, T.id, T.publishdate, T.link, T.content, T.updatedate, T.authorname,
+		T.authoruri, W.webcite_id, W.long_url,  
 		COUNT( T.title ) AS number_hits   
 	FROM tweets T   
 	LEFT JOIN webcite W ON T.tweetid = W.tweetid   
