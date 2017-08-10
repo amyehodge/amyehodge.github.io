@@ -16,9 +16,9 @@ In order to answer the questions, you will need to do the following basic data o
 * do calculations
 * combine data across tables
 
-Instead of searching for the right pieces of data ourselves, or clicking between tables, or manually sorting columns,
-we want to have the computer do this work for us. We also want to make it easy to repeat our analysis in case our data
-changes and we would prefer not to be modifying our source data when we do these analyses.
+Instead of searching for the right pieces of data ourselves, or clicking between tables, or manually sorting
+columns, we want to have the computer do this work for us. We also want to make it easy to repeat our analysis
+in case our data changes and we would prefer not to be modifying our source data when we do these analyses.
 
 Putting our data in a relational database will help us achieve these goals.
 ```
@@ -78,7 +78,8 @@ SELECT record_id, weight
 FROM surveys
 WHERE record_id IN (1, 63, 64);
 
-The `NULL` values are ignored in the calculation. The average weight reported is the average of the two records that have values: (40 + 48)/2.
+The `NULL` values are ignored in the calculation. The average weight reported is the average of the two records
+that have values: (40 + 48)/2.
 ```
 
 #### Challenge 8
@@ -243,7 +244,8 @@ WHERE species.taxa = 'Rodent' AND surveys.sex IS NOT NULL
 GROUP BY surveys.species_id, surveys.sex
 ORDER BY surveys.species_id;
 
-`ORDER BY` helps us be able to scan for differences, though graphing the output (and calculating standard deviation) would be even better.
+`ORDER BY` helps us be able to scan for differences, though graphing the output (and calculating standard
+deviation) would be even better.
 ```
 
 7. What is the average weight of each rodent species over the course of the years? Is there any noticeable trend for any of the species?
@@ -269,5 +271,9 @@ JOIN species
 ON surveys.species_id=species.species_id
 GROUP BY taxa;
 
-The numbers do not add up to 100% because the JOIN excludes the entries from the surveys table where the species was not recorded, but those entries ARE included in the percentage calculation (`SELECT COUNT(*) FROM surveys`). If you want to include the entries without a species in the results, use a `LEFT JOIN`. If you want to continue to exclude those but make the results add up to 100%, use a filter to exclude them from the percentage calculation (`SELECT COUNT(*) FROM surveys WHERE species IS NOT NULL`).
+The numbers do not add up to 100% because the JOIN excludes the entries from the surveys table where the species
+was not recorded, but those entries ARE included in the percentage calculation (`SELECT COUNT(*) FROM surveys`). If
+you want to include the entries without a species in the results, use a `LEFT JOIN`. If you want to continue to
+exclude those but make the results add up to 100%, use a filter to exclude them from the percentage calculation
+(`SELECT COUNT(*) FROM surveys WHERE species IS NOT NULL`).
 ```
