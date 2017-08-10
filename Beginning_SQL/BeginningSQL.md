@@ -641,17 +641,17 @@ SQL Queries for Automated Tweet Coding & Analysis. SQL syntax for search pattern
 doi:10.1371/journal.pone.0014118.s001
 
 ## <a name="resources"></a> Resources
-* [SQL Cheat Sheet](http://amyehodge.github.io/Beginning_SQL/SQL_cheat_sheet.md)  
-* [Challenge Answer Key](http://amyehodge.github.io/Beginning_SQL/challenges_key.md)  
+* [SQL Cheat Sheet](https://github.com/amyehodge/amyehodge.github.io/blob/master/Beginning_SQL/SQL_cheat_sheet.md)  
+* [Challenge Answer Key](https://github.com/amyehodge/amyehodge.github.io/blob/master/Beginning_SQL/challenges_key.md)  
 * Online tutorials  
 	* [W3 Schools](http://www.w3schools.com/sql/)  
 	* [SQLZOO](http://sqlzoo.net/)  
 	* [Codecademy](https://www.codecademy.com/courses/learn-sql)
 	* lynda.com training (free to everyone at Stanford!)  
-		* [Relational Database Fundamentals](http://www.lynda.com/Access-tutorials/Relational-Database-Fundamentals/145932-2.html)  
+		* [Learning Relational Databases](http://www.lynda.com/Access-tutorials/Relational-Database-Fundamentals/145932-2.html)  
 		* [SQL Essential Training](http://www.lynda.com/SQL-tutorials/SQL-Essential-Training/139988-2.html)  
 		* [MySQL Essential Training](http://www.lynda.com/MySQL-tutorials/MySQL-Essential-Training/139986-2.html)  
-		* [Up and Running with MySQL Development](http://www.lynda.com/MySQL-tutorials/Up-Running-MySQL-Development/158373-2.html)  
-		* [Foundations of Programming: Databases](http://www.lynda.com/Programming-tutorials/Foundations-Programming-Databases/112585-2.html)  
+		* [Learning MySQL Development](http://www.lynda.com/MySQL-tutorials/Up-Running-MySQL-Development/158373-2.html)  
+
 	* [TutorialsPoint](http://www.tutorialspoint.com/sqlite/index.htm)  
 	* Or try some of the tutorials listed   [here](http://www.vertabelo.com/blog/notes-from-the-lab/18-best-online-resources-for-learning-sql-and-database).
