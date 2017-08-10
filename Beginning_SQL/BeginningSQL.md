@@ -17,8 +17,7 @@ This workshop will teach the basics of working with and querying structured data
 12. [Order of execution vs order of query](#order)
 13. [Aggregation](#aggregation)
 15. [Joins](#joins)
-16. [Set operators](#sets)
-17. [Data types](#datatypes)
+16. [Data types](#datatypes)
 18. [Real life examples](#real): [schema](#schema) and [query](#query)
 19. [Commenting your queries](#comment)  
 20. [Exporting & saving query results](#exportsave)  
@@ -464,26 +463,20 @@ You can also combine many tables using a join. The query must include enough `JO
 
 ***CHALLENGE 8: Expand the query above to include the plot type and average weights (rounded to two decimal places) for each species/plot type combination. Order the output from the lowest weight to the highest. Exclude all records that don't have weight values recorded. Optional: use table name abbreviations and make the output easier to read.***
 
-## <a name="sets"></a> Set operators
-
-The set operators `UNION`, `UNION ALL`, `INTERSECT`, and `EXCEPT` can be used to compare the results from two `SELECT` statements. Note that the fields selected in the two queries must be identical in order for this to work.
-
-    A UNION B will return all the distinct rows present to A & B
-    A UNION ALL B will return all the rows present to A & B, including repetitions
-    A INTERSECT B will return all the rows common to A & B
-    A EXCEPT B will return all the rows present in A but not present in B
-
-To use a set operator, write the two queries and combine them with the operator. For example, this query will identify all the individuals that weight over 50g and that were female. Note that you could more easily and elegantly write this query without the set operator; this is only for example purposes.
-
-    SELECT species_id, plot, sex, weight
-    FROM surveys
-    WHERE sex='F'
-    INTERSECT
-    SELECT species_id, plot, sex, weight
-    FROM surveys
-    WHERE weight>225;
-
-***CHALLENGE 9: Write a query using a set operator to identify all the species (by genus, species, and species_id) found in 1977 but not in 2002.***
+> #### CHALLENGE ??
+>
+> SQL queries help us *ask* specific *questions* which we want to answer about our data. The real skill with SQL is to know how to translate our scientific questions into a sensible SQL query (and subsequently visualize and interpret our results).
+>
+> Have a look at the following questions; these questions are written in plain English. Can you translate them to *SQL queries* and give a suitable answer?  
+>
+> 1. How many plots from each type are there?  
+> 2. How many specimens are of each sex are there for each year?  
+> 3. How many specimens of each species were captured in each type of plot?  
+> 4. What is the average weight of each taxa?  
+> 5. What is the percentage of each species in each taxa?  
+> 6. What are the minimum, maximum and average weight for each species of Rodent?  
+> 7. What is the average hindfoot length for male and female rodent of each species? Is there a Male / Female difference?  
+> 8. What is the average weight of each rodent species over the course of the years? Is there any noticeable trend for any of the species?  
 
 
 ## <a name="datatypes"></a> Data types
@@ -518,48 +511,6 @@ The following table shows some common SQL data types. Different database platfor
 
 
 Table source: [W3 Schools](http://www.w3schools.com/sql/sql_datatypes_general.asp)
-
-## <a name="real"></a> Real life examples
-
-### <a name="schema"></a> Database schema
-
-The image below is an example of a database schema for an actual database - CyBase. [Cybase](http://www.cybase.org.au/) is a database of cyclic proteins that contains information about proteins, structures, and assays.  
-
-
-![CyBase Schema](http://amyehodge.github.io/Beginning_SQL/images/Cybase_schema.jpg "CyBase schema")
-
-Schema source:  
-Mulvenna, Jason P.; Wang, Conan; Craik, David J. (2011): Schematic of the relational database underlying CyBase. figshare. http://dx.doi.org/10.6084/m9.figshare.6775 Retrieved 17:23, Sep 16, 2015 (GMT)
-
-### <a name="query"></a> SQL query  
-
-This is an actual query used in an analysis of Twitter data. The goal of the research was to "validate Twitter as a real-time content, sentiment, and public attention trend-tracking tool" to measure public perceptions in emergencies. In this case they were looking specifically at swine flu. This query is also available in a [text file](http://amyehodge.github.io/Beginning_SQL/twitter_query.txt). See the source listed below the query for all the SQL queries used in this research (note how their non-standard formatting is really hard to read!).  
-
-See if you can understand how this query works, even without the database tables. We covered all of this in our lesson!
-
-	SELECT   
-		DISTINCT T.title, T.tweetid, T.id, T.publishdate, T.link, T.content, T.updatedate, T.authorname, T.authoruri, W.webcite_id, W.long_url,  
-		COUNT( T.title ) AS number_hits   
-	FROM tweets T   
-	LEFT JOIN webcite W ON T.tweetid = W.tweetid   
-	WHERE   
-		publishdate BETWEEN "2009-05-01 00:00:00" AND "2009- 12-31 23:59:59"   
-		AND   
- 		((LOWER(`title`) LIKE "%swine flu%" OR LOWER(`title`) LIKE "%swineflu%" OR LOWER(`title`) LIKE "%h1n1%"))   
- 		AND   
- 		((LOWER(`title`) NOT LIKE "%rt @%"   
- 		AND   
- 		LOWER(`title`) NOT LIKE "%rt@%"))   
- 		AND   
- 		((LOWER(title) LIKE "%http://%") OR (LOWER(title) LIKE "%https://%"))   
- 	GROUP by title   
- 	ORDER BY publishdate ASC;  
-
-
-
-Query source:   
-SQL Queries for Automated Tweet Coding & Analysis. SQL syntax for search patterns and keywords used by Infovigil for automated tweet coding and analysis.
-doi:10.1371/journal.pone.0014118.s001
 
 
 ## <a name="comment"></a> Commenting your queries
@@ -655,6 +606,46 @@ Type `.mode csv` to change the standard output to .csv format (instead of delimi
 Type `.once` followed by a space and a file name to send the output from the next `.read` query to a file instead of to the screen.  
 Type `.exit` to leave sqlite.  
 
+## <a name="real"></a> Real life examples
+
+### <a name="schema"></a> Database schema
+
+The image below is an example of a database schema for an actual database - CyBase. [Cybase](http://www.cybase.org.au/) is a database of cyclic proteins that contains information about proteins, structures, and assays.  
+
+
+![CyBase Schema](http://amyehodge.github.io/Beginning_SQL/images/Cybase_schema.jpg "CyBase schema")
+
+Schema source:  
+Mulvenna, Jason P.; Wang, Conan; Craik, David J. (2011): Schematic of the relational database underlying CyBase. figshare. http://dx.doi.org/10.6084/m9.figshare.6775 Retrieved 17:23, Sep 16, 2015 (GMT)
+
+### <a name="query"></a> SQL query  
+
+This is an actual query used in an analysis of Twitter data. The goal of the research was to "validate Twitter as a real-time content, sentiment, and public attention trend-tracking tool" to measure public perceptions in emergencies. In this case they were looking specifically at swine flu. This query is also available in a [text file](http://amyehodge.github.io/Beginning_SQL/twitter_query.txt). See the source listed below the query for all the SQL queries used in this research (note how their non-standard formatting is really hard to read!).  
+
+See if you can understand how this query works, even without the database tables. We covered all of this in our lesson!
+
+	SELECT   
+		DISTINCT T.title, T.tweetid, T.id, T.publishdate, T.link, T.content, T.updatedate, T.authorname, T.authoruri, W.webcite_id, W.long_url,  
+		COUNT( T.title ) AS number_hits   
+	FROM tweets T   
+	LEFT JOIN webcite W ON T.tweetid = W.tweetid   
+	WHERE   
+		publishdate BETWEEN "2009-05-01 00:00:00" AND "2009- 12-31 23:59:59"   
+		AND   
+ 		((LOWER(`title`) LIKE "%swine flu%" OR LOWER(`title`) LIKE "%swineflu%" OR LOWER(`title`) LIKE "%h1n1%"))   
+ 		AND   
+ 		((LOWER(`title`) NOT LIKE "%rt @%"   
+ 		AND   
+ 		LOWER(`title`) NOT LIKE "%rt@%"))   
+ 		AND   
+ 		((LOWER(title) LIKE "%http://%") OR (LOWER(title) LIKE "%https://%"))   
+ 	GROUP by title   
+ 	ORDER BY publishdate ASC;  
+
+
+Query source:   
+SQL Queries for Automated Tweet Coding & Analysis. SQL syntax for search patterns and keywords used by Infovigil for automated tweet coding and analysis.
+doi:10.1371/journal.pone.0014118.s001
 
 ## <a name="resources"></a> Resources
 * [SQL Cheat Sheet](http://amyehodge.github.io/Beginning_SQL/SQL_cheat_sheet.md)  

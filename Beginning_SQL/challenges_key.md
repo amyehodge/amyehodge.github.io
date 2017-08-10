@@ -38,7 +38,7 @@ SELECT
 
 
 
-#### Challenge 5
+#### Challenge 6
 Update your query from Challenge **??** to include plot ID in the results, and include filters so that only individuals caught on plot 1 or plot 2 and that weigh more than 75g are returned.
 
 ```
@@ -47,7 +47,7 @@ FROM surveys
 WHERE (plot_id=1 OR plot_id=2) AND (weight > 75);
 ```
 
-#### Challenge 6
+#### Challenge 7
 Write a query to determine the average weight of the individuals in records 1, 63, and 64. How are null values treated?
 
 ```
@@ -66,7 +66,7 @@ WHERE record_id IN (1, 63, 64);
 
 The null values are ignored in the calculation. The average weight reported is the average of the two records that have values: (40 + 48)/2.
 
-#### Challenge 4
+#### Challenge 8
 Update your query from Challenge 2 so that the results are ordered first by plot (ascending) and then lists the individuals in order from the biggest to the smallest.
 
 ```
@@ -76,7 +76,7 @@ WHERE (plot_id=1 OR plot_id=2) AND (weight > 75)
 ORDER BY plot_id ASC, weight DESC;
 ```
 
-#### Challenge 5
+#### Challenge 9
 Update your query from Challenge 4 so that weight is displayed in kilograms and rounded to two decimal places. Only display results for female animals captured in 1999. Order the results alphabetically by the species ID.
 
 ```
@@ -86,7 +86,7 @@ WHERE sex="F" AND year=1999
 ORDER BY species_id ASC;
 ```
 
-#### Challenge 6
+#### Challenge 10
 Write a query to determine how many of each sex were counted in each species. Ignore the records with no sex indicated.
 
 ```
@@ -106,7 +106,7 @@ GROUP BY species_id,sex
 ORDER BY sex, MAX(weight) DESC;
 ```
 
-#### Challenge 7
+#### Challenge 11
 Write a query that returns the genus, the species, and the weight of every individual captured at the site.
 
 ```
@@ -115,7 +115,7 @@ FROM surveys
 JOIN species ON surveys.species_id = species.species_ID;
 ```
 
-#### Challenge 8
+#### Challenge 12
 Expand the query above to include the plot type and average weights (rounded to two decimal places) for each species/plot type combination. Order the output from the lowest weight to the highest. Exclude all records that don't have weight values recorded. Optional: use table name abbreviations and make the output easier to read.
 
 ```
@@ -142,7 +142,7 @@ GROUP BY plot_type, sp.species_id
 ORDER BY AVG(weight);
 ```
 
-#### Challenge 9
+#### Challenge 13
 Write a query using a set operator to identify all the species (by genus, species, and species_id) found in 1977 but not in 2002.
 
 ```
@@ -156,3 +156,28 @@ FROM surveys
 JOIN species ON surveys.species_id = species.species_ID
 WHERE surveys.year = 2002;
 ```
+
+#### Challenge 14
+1. Solution
+`SELECT plot_type, count(*) AS num_plots  FROM plots  GROUP BY plot_type  ORDER BY num_plots DESC`
+
+2. Solution
+`SELECT year, sex, count(*) AS num_animal  FROM surveys  WHERE sex IS NOT null  GROUP BY sex, year`
+
+3. Solution
+`SELECT species_id, plot_type, count(*) FROM surveys JOIN plots ON surveys.plot_id=plots.plot_id WHERE species_id IS NOT null GROUP BY species_id, plot_type`
+
+4. Solution
+`SELECT taxa, AVG(weight) FROM surveys JOIN species ON species.species_id=surveys.species_id GROUP BY taxa`
+
+5. Solution
+`SELECT taxa, 100.0*count(*)/(SELECT count(*) FROM surveys) FROM surveys JOIN species ON surveys.species_id=species.species_id GROUP BY taxa`
+
+6. Solution
+`SELECT surveys.species_id, MIN(weight) as min_weight, MAX(weight) as max_weight, AVG(weight) as mean_weight FROM surveys JOIN species ON surveys.species_id=species.species_id WHERE taxa = 'Rodent' GROUP BY surveys.species_id`
+
+7. Solution
+`SELECT surveys.species_id, sex, AVG(hindfoot_length) as mean_foot_length  FROM surveys JOIN species ON surveys.species_id=species.species_id WHERE taxa = 'Rodent' AND sex IS NOT NULL GROUP BY surveys.species_id, sex`
+
+8. Solution
+`SELECT surveys.species_id, year, AVG(weight) as mean_weight FROM surveys JOIN species ON surveys.species_id=species.species_id WHERE taxa = 'Rodent' GROUP BY surveys.species_id, year`
