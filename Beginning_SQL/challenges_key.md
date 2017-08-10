@@ -272,8 +272,8 @@ ON surveys.species_id=species.species_id
 GROUP BY taxa;
 
 The numbers do not add up to 100% because the JOIN excludes the entries from the surveys table where the species
-was not recorded, but those entries ARE included in the percentage calculation (`SELECT COUNT(*) FROM surveys`). If
-you want to include the entries without a species in the results, use a `LEFT JOIN`. If you want to continue to
+was not recorded, but those entries ARE included in the percentage calculation (`SELECT COUNT(*) FROM surveys`).
+If you want to include the entries without a species in the results, use a `LEFT JOIN`. If you want to continue to
 exclude those but make the results add up to 100%, use a filter to exclude them from the percentage calculation
 (`SELECT COUNT(*) FROM surveys WHERE species IS NOT NULL`).
 ```
