@@ -52,10 +52,11 @@ simplified it a little bit for the workshop, but you can download the
 exactly the same tools we'll learn about today.
 
 > #### CHALLENGE 1
-> Open each of the csv files and explore them. What information is contained in each file? What would you need to answer the following research questions? Which files have the data you would need? What operations would you need to perform if you were doing these analyses from these csv files?
+> Open each of the csv files and explore them. What information is contained in each file? If you had the following research questions:
 > * How has the hindfoot length and weight of *Dipodomys* species changed over time?
 > * What is the average weight of each species, per year?
 > * What information can I learn about *Dipodomys* species in the 2000s, over time?
+What would you need to answer these questions? Which files have the data you would need? What operations would you need to perform if you were doing these analyses from these csv files?
 
 ## <a name="import"></a> Import data into SQLite
 
@@ -266,7 +267,7 @@ However, the program will evaluate `AND` first and then `OR`, which would give u
 
 We started with something simple, then added more clauses one by one, testing their effects as we went along. For complex queries, this is a good strategy to make sure you are getting what you want. It also might be helpful to create a subset of the data that you can easily see in a temporary database to practice your queries on before working on a larger or more complicated database.
 
-> #### CHALLENGE 2
+> #### CHALLENGE 6
 > Update your query from Challenge 1 to include plot ID in the results, and include filters so that only individuals caught on plot 1 or plot 2 and that weigh more than 75g are returned.
 
 ## <a name="missing"></a>Missing data
@@ -285,7 +286,8 @@ Or to find all cases where a weight value was entered:
     FROM surveys
     WHERE weight IS NOT NULL;            
 
-***CHALLENGE 3: Write a query to determine the average weight of the individuals in records 1, 63, and 64. How are null values treated?***
+> #### CHALLENGE 7
+> Write a query to determine the average weight of the individuals in records 1, 63, and 64. How are null values treated?***
 
 ## <a name="sort"></a> Sorting
 
@@ -312,7 +314,8 @@ We can also sort on several fields at once. Let's do by plot and then by species
     WHERE (year < 1980 OR year >= 2000) AND (species_id IN ("DM", "DO", "DS"))
     ORDER BY plot_id ASC, species_id DESC;
 
-***CHALLENGE 4: Update your query from Challenge 2 so that the results are ordered first by plot (ascending) and then lists the individuals in order from the biggest to the smallest.***
+> #### CHALLENGE 8
+>Update your query from Challenge 2 so that the results are ordered first by plot (ascending) and then lists the individuals in order from the biggest to the smallest.***
 
 ## <a name="order"></a>Order of execution vs. order of query
 
@@ -336,7 +339,7 @@ The computer is basically doing this:
 When we write queries, SQL dictates the query parts be supplied in a particular order: `SELECT`, `FROM`, `JOIN...ON`, `WHERE`, `GROUP BY`, `ORDER BY`. Note that this is not the same order in which the query is executed. (We'll get to `JOIN...ON` and `GROUP BY` in a bit.)
 
 
-> ####CHALLENGE 5
+> #### CHALLENGE 9
 > Update your query from Challenge 4 so that weight is displayed in kilograms and rounded to two decimal places. Only display results for female animals captured in 1999. Order the results alphabetically by the species ID.
 
 
@@ -366,7 +369,7 @@ Now let's output this value in kilograms, rounded to 3 decimal places.
     FROM surveys
     WHERE species_id="DM";
 
-> #### CHALLENGE ??
+> #### CHALLENGE 10
 > Calculate the total, average, minimum, and maximum weights of the animals collected over the duration of the survey, then see if you can calculate these values only for animals that weighed between 5 and 10 g.
 
 Now, let's see how many individuals were counted in each species. We do this using a `GROUP BY` clause.
@@ -377,7 +380,7 @@ Now, let's see how many individuals were counted in each species. We do this usi
 
 `GROUP BY` tells SQL what field or fields we want to use to aggregate the data. If we want to group by multiple fields, we give `GROUP BY` a comma separated list.
 
-> #### CHALLENGE ??
+> #### CHALLENGE 11
 > Identify how many animals were counted in each year total.
 > Identify how many animals were counted in each year per species.
 > Identify the average weight of each species in each year.
@@ -421,7 +424,7 @@ For example, what if we wanted information on when individuals of each species w
 		JOIN species
 		ON surveys.species_id = species.species_id;
 
-> #### CHALLENGE 7
+> #### CHALLENGE 12
 > Identify the genus, species, and weight of every individual captured at the site.***
 
 
@@ -438,7 +441,7 @@ This is because, by default, SQL only returns records where the joining value is
 
 We can also tell the computer that we wish to keep all the records in the first table by using the command `LEFT OUTER JOIN` or `LEFT JOIN` for short.
 
-> #### CHALLENGE ??
+> #### CHALLENGE 13
 > Rewrite the join above to keep all the entries present in the `surveys` table. How many records are returned by this query?
 
 Joins can also be combined with sorting, filtering, and aggregation. So, if we wanted average mass of the individuals on each different type of treatment, we could do something liek
@@ -449,7 +452,7 @@ Joins can also be combined with sorting, filtering, and aggregation. So, if we w
 		ON surveys.plot_id = plots.plot_id
 		GROUP BY plots.plot_type;
 
-> #### CHALLENGE ??
+> #### CHALLENGE 14
 > How many of each genus were caught in each plot? Report the answer with the greatest number at the top of the list.
 
 You can also combine many tables using a join. The query must include enough `JOIN`...`ON` clauses to link all of the tables together. In the query below, we are now looking at the count of each species for each type of plot during each year. This required 1) adding in an extra `JOIN`...`ON` clause, 2) including plot_type in the `SELECT` portion of the statement, and 3) adding plot_type to the `GROUP BY` function:
@@ -461,9 +464,10 @@ You can also combine many tables using a join. The query must include enough `JO
     GROUP BY surveys.species_id, year, plot_type
     ORDER BY COUNT(*) DESC;
 
-***CHALLENGE 8: Expand the query above to include the plot type and average weights (rounded to two decimal places) for each species/plot type combination. Order the output from the lowest weight to the highest. Exclude all records that don't have weight values recorded. Optional: use table name abbreviations and make the output easier to read.***
+> #### CHALLENGE 15
+> Expand the query above to include the plot type and average weights (rounded to two decimal places) for each species/plot type combination. Order the output from the lowest weight to the highest. Exclude all records that don't have weight values recorded. Optional: use table name abbreviations and make the output easier to read.***
 
-> #### CHALLENGE ??
+> #### CHALLENGE 16
 >
 > SQL queries help us *ask* specific *questions* which we want to answer about our data. The real skill with SQL is to know how to translate our scientific questions into a sensible SQL query (and subsequently visualize and interpret our results).
 >

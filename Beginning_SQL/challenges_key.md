@@ -158,6 +158,12 @@ WHERE surveys.year = 2002;
 ```
 
 #### Challenge 14
+
+
+#### Challenge 15
+
+
+#### Challenge 16
 1. Solution
 `SELECT plot_type, count(*) AS num_plots  FROM plots  GROUP BY plot_type  ORDER BY num_plots DESC`
 
