@@ -20,7 +20,7 @@ Putting our data in a relational database will help us achieve these goals.
 ```
 
 #### Challenge 2
-Import the plots and surveys tables using the information provided in the table below.
+Import the **plots** and **species** tables using the information provided in the table below.
 
 #### Challenge 3
 Identify the species ID and weight for each survey item and the date on which it was recorded.
@@ -38,7 +38,7 @@ SELECT
 ```
 
 #### Challenge 5
-Produce a table listing the data for all individuals in Plot 1 that weighed more than 75 grams, telling us the date, species ID, and weight (in kg).
+Produce a table listing the data for all individuals in plot 1 that weighed more than 75 grams, telling us the date, species ID, and weight (in kg).
 
 ```
 SELECT
@@ -54,7 +54,7 @@ WHERE (plot_id=1 OR plot_id=2) AND (weight > 75);
 ```
 
 #### Challenge 7
-Write a query to determine the average weight of the individuals in records 1, 63, and 64. How are null values treated?
+Write a query to determine the average weight of the individuals in records 1, 63, and 64. How are `NULL` values treated?
 
 ```
 SELECT AVG(weight)
@@ -70,10 +70,10 @@ FROM surveys
 WHERE record_id IN (1, 63, 64);
 ```
 
-The null values are ignored in the calculation. The average weight reported is the average of the two records that have values: (40 + 48)/2.
+The `NULL` values are ignored in the calculation. The average weight reported is the average of the two records that have values: (40 + 48)/2.
 
 #### Challenge 8
-Alphabetize the species table by genus and then species.
+Alphabetize the **species** table by genus and then species.
 
 ```
 SELECT *  
@@ -95,35 +95,23 @@ SELECT
 * Now try to combine the above queries to list how many and the average weight for each species in each year.
 
 ```
-SELECT```
+SELECT
 
-
-
-
-
-
-
-Write a query to determine how many of each sex were counted in each species. Ignore the records with no sex indicated.
-
-```
-SELECT species_id, sex, COUNT(*)
+last part
+SELECT species_id, year, COUNT(*), AVG(weight)
 FROM surveys
-WHERE sex IS NOT NULL
-GROUP BY species_id, sex;
+GROUP BY species_id, year;
 ```
 
-Then, expanding on this query, list the weight of the largest animal in each category. Ignore the records that do not have weight indicated. What species ID is the largest female and how much does she weigh?
+#### Challenge 11
+Figure out how many different genera (that's the plural of genus!) there are in each taxa, but only for cases where there are 10 or more genera. List the taxa with the most genera at the top.
 
 ```
-SELECT species_id, sex, COUNT(*), MAX(weight)
-FROM surveys
-WHERE sex IS NOT NULL AND weight IS NOT NULL
-GROUP BY species_id,sex
-ORDER BY sex, MAX(weight) DESC;
+SELECT
 ```
 
-#### Challenge 10
-Write a query that returns the genus, the species, and the weight of every individual captured at the site.
+#### Challenge 12
+Identify the genus, species, and weight of every individual captured at the site.
 
 ```
 SELECT species.genus, species.species, surveys.weight
@@ -131,75 +119,92 @@ FROM surveys
 JOIN species ON surveys.species_id = species.species_ID;
 ```
 
-#### Challenge 11
-Expand the query above to include the plot type and average weights (rounded to two decimal places) for each species/plot type combination. Order the output from the lowest weight to the highest. Exclude all records that don't have weight values recorded. Optional: use table name abbreviations and make the output easier to read.
-
-```
-SELECT genus, species, plot_type, ROUND(AVG(weight), 2)
-FROM surveys
-JOIN species ON surveys.species_id = species.species_ID
-JOIN plots ON plots.plot_ID = surveys.plot_ID
-WHERE weight IS NOT NULL
-GROUP BY plot_type, species.species_id
-ORDER BY AVG(weight);
-```
-One example answer with options:
-
-```
-SELECT genus AS 'Genus',
-   species AS 'Species',
-   plot_type AS 'Type of plot',
-   ROUND(AVG(weight), 2) AS 'Average weight (g)'
-FROM surveys su
-JOIN species sp ON su.species_id = sp.species_id
-JOIN plots p ON p.plot_ID = su.plot_id
-WHERE weight IS NOT NULL
-GROUP BY plot_type, sp.species_id
-ORDER BY AVG(weight);
-```
-
-#### Challenge 12
-Write a query using a set operator to identify all the species (by genus, species, and species_id) found in 1977 but not in 2002.
-
-```
-SELECT DISTINCT species.genus, species.species, species.species_ID
-FROM surveys
-JOIN species ON surveys.species_id = species.species_ID
-WHERE surveys.year=1977
-EXCEPT
-SELECT DISTINCT species.genus, species.species, species.species_ID
-FROM surveys
-JOIN species ON surveys.species_id = species.species_ID
-WHERE surveys.year = 2002;
-```
-
 #### Challenge 13
+Rewrite the join above to keep all the entries present in the **surveys** table. How many records are returned by this query?
 
+```
+SELECT
+```
 
 #### Challenge 14
+How many of each genus were caught in each plot? Report the answer with the greatest number at the top of the list.
 
+```
+SELECT
+```
 
 #### Challenge 15
-1. Solution
-`SELECT plot_type, count(*) AS num_plots  FROM plots  GROUP BY plot_type  ORDER BY num_plots DESC`
+Have a look at the following questions; these questions are written in plain English. Can you translate them to SQL queries and give a suitable answer?
+1. How many plots from each type are there?
+```
+SELECT plot_type, COUNT(*)
+FROM plots  
+GROUP BY plot_type  
+ORDER BY COUNT(*) DESC
+```
 
-2. Solution
-`SELECT year, sex, count(*) AS num_animal  FROM surveys  WHERE sex IS NOT null  GROUP BY sex, year`
+2. How many specimens are of each sex are there for each year?
+```
+SELECT year, sex, COUNT(*)  
+FROM surveys  
+WHERE sex IS NOT null  
+GROUP BY sex, year
+```
 
-3. Solution
-`SELECT species_id, plot_type, count(*) FROM surveys JOIN plots ON surveys.plot_id=plots.plot_id WHERE species_id IS NOT null GROUP BY species_id, plot_type`
+3. How many specimens of each species were captured in each type of plot?
+```
+SELECT species_id, plot_type, COUNT(*)
+FROM surveys
+JOIN plots
+ON surveys.plot_id=plots.plot_id
+WHERE species_id IS NOT null
+GROUP BY species_id, plot_type
+```
 
-4. Solution
-`SELECT taxa, AVG(weight) FROM surveys JOIN species ON species.species_id=surveys.species_id GROUP BY taxa`
+4. What is the average weight of each taxa?
+```
+SELECT taxa, AVG(weight)
+FROM surveys
+JOIN species
+ON species.species_id=surveys.species_id
+GROUP BY taxa
+```
 
-5. Solution
-`SELECT taxa, 100.0*count(*)/(SELECT count(*) FROM surveys) FROM surveys JOIN species ON surveys.species_id=species.species_id GROUP BY taxa`
+5. What is the percentage of each species in each taxa?
+```
+SELECT taxa, 100.0*COUNT(*)/(SELECT count(*) FROM surveys)
+FROM surveys
+JOIN species
+ON surveys.species_id=species.species_id
+GROUP BY taxa
+```
 
-6. Solution
-`SELECT surveys.species_id, MIN(weight) as min_weight, MAX(weight) as max_weight, AVG(weight) as mean_weight FROM surveys JOIN species ON surveys.species_id=species.species_id WHERE taxa = 'Rodent' GROUP BY surveys.species_id`
+6. What are the minimum, maximum and average weight for each species of rodent?
+```
+SELECT surveys.species_id, MIN(weight), MAX(weight), AVG(weight)
+FROM surveys
+JOIN species
+ON surveys.species_id=species.species_id
+WHERE taxa = 'Rodent'
+GROUP BY surveys.species_id
+```
 
-7. Solution
-`SELECT surveys.species_id, sex, AVG(hindfoot_length) as mean_foot_length  FROM surveys JOIN species ON surveys.species_id=species.species_id WHERE taxa = 'Rodent' AND sex IS NOT NULL GROUP BY surveys.species_id, sex`
+7. What is the average hindfoot length for male and female rodent of each species? Is there a male/female difference?
+```
+SELECT surveys.species_id, sex, AVG(hindfoot_length)
+FROM surveys
+JOIN species
+ON surveys.species_id=species.species_id
+WHERE taxa = 'Rodent' AND sex IS NOT NULL
+GROUP BY surveys.species_id, sex
+```
 
-8. Solution
-`SELECT surveys.species_id, year, AVG(weight) as mean_weight FROM surveys JOIN species ON surveys.species_id=species.species_id WHERE taxa = 'Rodent' GROUP BY surveys.species_id, year`
+8. What is the average weight of each rodent species over the course of the years? Is there any noticeable trend for any of the species?
+```
+SELECT surveys.species_id, year, AVG(weight)
+FROM surveys
+JOIN species
+ON surveys.species_id=species.species_id
+WHERE taxa = 'Rodent'
+GROUP BY surveys.species_id, year
+```

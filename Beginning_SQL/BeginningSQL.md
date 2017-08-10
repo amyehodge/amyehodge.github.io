@@ -109,7 +109,7 @@ and search tab in the right hand section of the screen.
 ![Contents of species table](http://amyehodge.github.io/Beginning_SQL/images/BSQL3b.png "Contents of species table")
 
 > #### CHALLENGE 2
-> Import the plots and surveys tables using the information provided in the table below.
+> Import the **plots** and **species** tables using the information provided in the table below.
 
 
 | Table | Column | Data Type |
@@ -176,7 +176,7 @@ If we want more information, we can add a new column to the list of fields, righ
 
     SELECT year, month, day FROM surveys;
 
-Or we can select all of the columns in a table using the wildcard "``*``".
+Or we can return all of the columns in a table using the wildcard "``*``".
 
     SELECT * FROM surveys;
 
@@ -185,11 +185,11 @@ Or we can select all of the columns in a table using the wildcard "``*``".
 
 ### <a name="unique"></a> Unique values
 
-If we want only the unique values so that we can quickly see what species have been sampled we use the keyword ``DISTINCT``.
+If we want only the unique values so that we can quickly see what species have been sampled we use the keyword `DISTINCT`.
 
     SELECT DISTINCT species_id FROM surveys;
 
-If we select more than one column, then the distinct pairs of values are returned.
+If we choose more than one column, then the distinct pairs of values are returned.
 
     SELECT DISTINCT year, species_id FROM surveys;
 
@@ -229,7 +229,7 @@ We can do the same thing with numbers. Here, we only want the data since 2000:
     FROM surveys
     WHERE year >= 2000;
 
-We can use more sophisticated conditions by combining filters with AND as well as OR. For example, suppose we want the data on *Dipodomys merriami* starting in the year 2000, we can combine those filters using `AND`.
+We can use more sophisticated conditions by combining filters with `AND` as well as `OR`. For example, suppose we want the data on *Dipodomys merriami* starting in the year 2000, we can combine those filters using `AND`.
 
     SELECT *
     FROM surveys
@@ -250,7 +250,7 @@ The above query is getting kind of long, so let's use a shortcut for all those `
     WHERE species_id IN ("DM", "DO", "DS");
 
 > #### CHALLENGE 5
-> Produce a table listing the data for all individuals in Plot 1 that weighed more than 75 grams, telling us the date, species ID, and weight (in kg).
+> Produce a table listing the data for all individuals in plot 1 that weighed more than 75 grams, telling us the date, species ID, and weight (in kg).
 
 Continuing with the evaluation of `AND` and `OR`, if we wanted to get all the records from before 1980 or from 2000 or later that were about species DM, we might be inclined to write the query this way:
 
@@ -288,7 +288,7 @@ Or to find all cases where a weight value was entered:
     WHERE weight IS NOT NULL;            
 
 > #### CHALLENGE 7
-> Write a query to determine the average weight of the individuals in records 1, 63, and 64. How are null values treated?
+> Write a query to determine the average weight of the individuals in records 1, 63, and 64. How are `NULL` values treated?
 
 ## <a name="sort"></a> Sorting
 
@@ -316,7 +316,7 @@ We can also sort on several fields at once. Let's do by plot and then by species
     ORDER BY plot_id ASC, species_id DESC;
 
 > #### CHALLENGE 8
-> Alphabetize the species table by genus and then species.
+> Alphabetize the **species** table by genus and then species.
 
 ## <a name="order"></a>Order of execution vs. order of query
 
@@ -336,7 +336,7 @@ The computer is basically doing this:
 3. Sorting results according to `ORDER BY`
 4. Displaying requested columns or expressions according to `SELECT`
 
-When we write queries, SQL dictates the query parts be supplied in a particular order: `SELECT`, `FROM`, `JOIN...ON`, `WHERE`, `GROUP BY`, `ORDER BY`. Note that this is not the same order in which the query is executed. (We'll get to `JOIN...ON` and `GROUP BY` in a bit.)
+When we write queries, SQL dictates the query parts be supplied in a particular order: `SELECT`, `FROM`, `JOIN...ON`, `WHERE`, `GROUP BY`, `HAVING`, `ORDER BY`. Note that this is not the same order in which the query is executed. (We'll get to `JOIN...ON`, `GROUP BY`, and `HAVING` in a bit.)
 
 ## <a name="aggregation"></a> Aggregation
 
@@ -367,7 +367,7 @@ Now, let's see how many individuals were counted in each species. We do this usi
     FROM surveys
     GROUP BY species_id;
 
-`GROUP BY` tells SQL what field or fields we want to use to aggregate the data. If we want to group by multiple fields, we give `GROUP BY` a comma separated list.
+`GROUP BY` tells SQL what field or fields we want to use to aggregate the data. If we want to `GROUP BY` by multiple fields, we give `GROUP BY` a comma separated list.
 
 > #### CHALLENGE 10
 > * Identify how many animals were counted in each year total.
@@ -402,7 +402,7 @@ We will also need to use the keyword `ON` to tell the computer which columns pro
 
 Field names that are identical in both tables can confuse the software so you must specify which table you are talking about, any time you mention these fields. You do this by inserting the table name in front of the field name as `table.colname`, as I have done above in the `SELECT` and `GROUP BY` parts of the query.
 
-We often won't want all of the fields from both tables, so anywhere we would have used a field name in a query on a single table, we can use `table.colname` in our join.
+We often won't want all of the fields from both tables, so anywhere we would have used a field name in a query on a single table, we can use `table.colname` in our `JOIN`.
 
 For example, what if we wanted information on when individuals of each species were captured, but instead of their species ID, we wanted their actual species names.
 
@@ -417,21 +417,21 @@ For example, what if we wanted information on when individuals of each species w
 
 We can count the number of records returned by our original `JOIN` query.
 
-		SELECT COUNT(\*)
+		SELECT COUNT(*)
 		FROM surveys
 		JOIN species
 		ON surveys.species_id = species.species_id
 
 Notice that this number is smaller than the number of records present in the survey data.
 
-This is because, by default, SQL only returns records where the joining value is present in the join columns of both tables (i.e. it takes the intersection of the two join columns). This joining behavior is known as an `INNER JOIN` (this term can be used interchangeably with `JOIN`).
+This is because, by default, SQL only returns records where the joining value is present in the `JOIN` columns of both tables (i.e. it takes the intersection of the two `JOIN` columns). This joining behavior is known as an `INNER JOIN` (this term can be used interchangeably with `JOIN`).
 
 We can also tell the computer that we wish to keep all the records in the first table by using the command `LEFT OUTER JOIN` or `LEFT JOIN` for short.
 
 > #### CHALLENGE 13
-> Rewrite the join above to keep all the entries present in the `surveys` table. How many records are returned by this query?
+> Rewrite the `JOIN` above to keep all the entries present in the **surveys** table. How many records are returned by this query?
 
-Joins can also be combined with sorting, filtering, and aggregation. So, if we wanted average mass of the individuals on each different type of treatment, we could do something liek
+Joins can also be combined with sorting, filtering, and aggregation. So, if we wanted average mass of the individuals on each different type of treatment, we could do something like
 
 		SELECT plots.plot_type, AVG(survey.weight)
 		FROM surveys
@@ -442,7 +442,7 @@ Joins can also be combined with sorting, filtering, and aggregation. So, if we w
 > #### CHALLENGE 14
 > How many of each genus were caught in each plot? Report the answer with the greatest number at the top of the list.
 
-You can also combine many tables using a join. The query must include enough `JOIN`...`ON` clauses to link all of the tables together. In the query below, we are now looking at the count of each species for each type of plot during each year. This required 1) adding in an extra `JOIN`...`ON` clause, 2) including plot_type in the `SELECT` portion of the statement, and 3) adding plot_type to the `GROUP BY` function:
+You can also combine many tables using a `JOIN`. The query must include enough `JOIN`...`ON` clauses to link all of the tables together. In the query below, we are now looking at the count of each species for each type of plot during each year. This required 1) adding in an extra `JOIN`...`ON` clause, 2) including plot_type in the `SELECT` portion of the statement, and 3) adding plot_type to the `GROUP BY` function:
 
     SELECT surveys.species_id, surveys.year, plots.plot_type, COUNT(*), surveys.AVG(weight)
     FROM surveys
@@ -452,21 +452,18 @@ You can also combine many tables using a join. The query must include enough `JO
     ORDER BY COUNT(*) DESC;
 
 > #### CHALLENGE 15
-> Expand the query above to include the plot type and average weights (rounded to two decimal places) for each species/plot type combination. Order the output from the lowest weight to the highest. Exclude all records that don't have weight values recorded. Optional: use table name abbreviations and make the output easier to read.***
-
-> #### CHALLENGE 16
 >
-> SQL queries help us *ask* specific *questions* which we want to answer about our data. The real skill with SQL is to know how to translate our scientific questions into a sensible SQL query (and subsequently visualize and interpret our results).
+> SQL queries help us ask specific questions which we want to answer about our data. The real skill with SQL is to know how to translate our scientific questions into a sensible SQL query (and subsequently visualize and interpret our results).
 >
-> Have a look at the following questions; these questions are written in plain English. Can you translate them to *SQL queries* and give a suitable answer?  
+> Have a look at the following questions; these questions are written in plain English. Can you translate them to SQL queries and give a suitable answer?  
 >
 > 1. How many plots from each type are there?  
 > 2. How many specimens are of each sex are there for each year?  
 > 3. How many specimens of each species were captured in each type of plot?  
 > 4. What is the average weight of each taxa?  
 > 5. What is the percentage of each species in each taxa?  
-> 6. What are the minimum, maximum and average weight for each species of Rodent?  
-> 7. What is the average hindfoot length for male and female rodent of each species? Is there a Male / Female difference?  
+> 6. What are the minimum, maximum and average weight for each species of rodent?  
+> 7. What is the average hindfoot length for male and female rodent of each species? Is there a male/female difference?  
 > 8. What is the average weight of each rodent species over the course of the years? Is there any noticeable trend for any of the species?  
 
 
@@ -512,26 +509,26 @@ Comments are ignored by the software and can be added in one of two ways.
 
 Short comments can be added by including them after two consecutive dashes. A line return signals the end of the comment. In the query below, the comment "-- only data from plots 1 & 2" in the 7th line will be ignored. These comments can also included on separate lines.
 
-    SELECT p.genus,
-    	p.species,  
-		COUNT(*) AS 'Total individuals',
-		AVG(u.weight) AS 'Average weight (g)'
-	FROM surveys u
-    JOIN species p ON u.species_id=p.species_id
-	WHERE (u.plot=1 OR u.plot=2) AND (u.weight > 75) -- only data from plots 1 & 2
-	GROUP BY p.species_id
-	ORDER BY p.species_id;
+    SELECT species.genus,
+    	species.species,  
+		COUNT(*),
+		AVG(surveys.weight)
+		FROM surveys
+    JOIN species ON surveys.species_id=species.species_id
+		WHERE (surveys.plot=1 OR surveys.plot=2) AND (surveys.weight > 75) -- only data from plots 1 & 2
+		GROUP BY species.species_id
+		ORDER BY species.species_id;
 
 Longer comments can be added and separated from the query text by enclosing them in a forward slash and asterisk combination (`/*...*/`), as shown below. These comments can be written on multiple lines and the final asterisk-forward slash combination signals the end of the comment.  
 
-    SELECT p.genus,
-    	p.species,
-    	COUNT(*) AS 'Total individuals',
-    AVG(u.weight) AS 'Average weight (g)'
-    FROM surveys u
-    JOIN species p ON u.species_id=p.species_id
-    WHERE (u.plot=1 OR u.plot=2) AND (u.weight > 75)
-    GROUP BY p.species_id
+		SELECT species.genus,
+			species.species,  
+		COUNT(*),
+		AVG(surveys.weight)
+		FROM surveys
+		JOIN species ON surveys.species_id=species.species_id
+		WHERE (surveys.plot=1 OR surveys.plot=2) AND (surveys.weight > 75)
+		GROUP BY species.species_id
     /* I am grouping the results by species_id because I want to see
 		average weights and
     total numbers
@@ -543,7 +540,7 @@ Details about commenting code can be found in the [SQLite documentation](https:/
 
 ## <a name="exportsave"></a> Exporting & saving query results
 
-* Export Results:  To export your results into a saved file on your computer, click on the button next to **Actions** and choose **Save Result to File**. This file is not queriable.
+* Export Results: To export your results into a saved file on your computer, click on the button next to **Actions** and choose **Save Result to File**. This file is not queryable.
 * Save Results: To save your results as a special kind of table called a view, click on **View** in the main menu and choose **Create View**. You can view and query this special table in SQLite.
 
 
