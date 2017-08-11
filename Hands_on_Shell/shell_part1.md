@@ -148,8 +148,8 @@ Output:
 
 Notice that we surrounded the name by quotation marks. The *arguments* given
 to any shell command are separated by spaces, so a way to let them know that
-we mean 'one single thing called "Evil plan to destroy the world"', not
-'six different things', is to use (single or double) quotation marks.
+we mean one single thing called "big trouble", not
+two different things, is to use (single or double) quotation marks.
 
 We've now seen how we can go 'down' through our directory structure
 (as in into more nested directories). If we want to go back, we can type `cd ..`.
