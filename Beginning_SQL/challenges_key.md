@@ -174,11 +174,11 @@ This query returns 35,549 records. This is the as the number of records in the s
 How many of each genus were caught in each plot? Report the answer with the greatest number at the top of the list.
 
 ```
-SELECT surveys.plot_id, species.genus, COUNT(surveys.species_id)
+SELECT surveys.plot_id, species.genus, COUNT(*)
 FROM surveys
 JOIN species ON surveys.species_id=species.species_id
 GROUP BY surveys.plot_id, species.genus
-ORDER BY COUNT(species.genus) DESC;
+ORDER BY COUNT(*) DESC;
 ```
 
 #### Challenge 15
