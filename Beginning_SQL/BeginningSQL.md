@@ -434,7 +434,7 @@ We can also tell the computer that we wish to keep all the records in the first 
 
 Joins can also be combined with sorting, filtering, and aggregation. So, if we wanted average mass of the individuals on each different type of treatment, we could do something like
 
-		SELECT plots.plot_type, AVG(survey.weight)
+		SELECT plots.plot_type, AVG(surveys.weight)
 		FROM surveys
 		JOIN plots
 		ON surveys.plot_id = plots.plot_id
