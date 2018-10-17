@@ -29,7 +29,7 @@ This workshop will teach the basics of working using OpenRefine for cleaning up 
 ## <a name="intro"></a> Introduction   
 It's extremely difficult to keep all errors out of your datasets. It's even harder if multiple people have contributed to the compilation of that dataset. In addition, some software is picky about the precise format of data, the presence of spaces, etc.  
 
-![OpenRefine Logo](http://amyehodge.github.io/OpenRefine/images/OpenRefineLogo.png "OpenRefine Logo")
+![OpenRefine Logo](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OpenRefineLogo.png "OpenRefine Logo")
 
 OpenRefine is an Interactive Data Transformation tool (IDT) that allows you to easily perform data assessment and cleaning without having to write customized scripts to perform all of these tasks. OpenRefine offers many useful features, including:  
 
