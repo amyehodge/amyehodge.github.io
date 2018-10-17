@@ -56,7 +56,7 @@ Once installed, OpenRefine will open in a window in your default browser, even t
 
 When you open the software you'll see a panel on the left with three options:
 
-![OpenRefine start-up page](http://amyehodge.github.io/OpenRefine/OpenRefine/images/OR01.png "OpenRefine start-up page")  
+![OpenRefine start-up page](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR01.png "OpenRefine start-up page")  
 
 * `Create project`: Use this option to load a dataset into OpenRefine for the first time. You can import data from a file in a variety of formats or from other sources, including URLs.  
 * `Open project`: Use this option to open a project that you created and saved previously. If you click on this object you will see a list of available projects to choose from.  
@@ -78,7 +78,7 @@ OpenRefine will then show you a preview of the dataset in the top half of the wi
 
 ...and options for parsing the data on the bottom half of the window:  
 
-![OpenRefine dataset parsing options](http://amyehodge.github.io/OpenRefine/images/OR03b.png "OpenRefine dataset parsing options")
+![OpenRefine dataset parsing options](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR03b.png "OpenRefine dataset parsing options")
 
 Note that for our dataset, quotation marks are used within cells to indicate object titles and inscriptions and not to enclose cells containing column separators (like commas or semicolons). Because of this, we will need to uncheck the check box on the right that indicates this (`Quotation marks are used to enclose cells containing column separators`).  
 
@@ -88,13 +88,13 @@ Once you've selected all the appropriate options for your file, click on `Create
 
 Once the dataset has finished importing you should see a screen that looks like this:  
 
-![Imported dataset](http://amyehodge.github.io/OpenRefine/images/OR04.png "Imported dataset")
+![Imported dataset](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR04.png "Imported dataset")
 
 Note that the first three columns -- labeled `All` -- do not contain data from the dataset. The first two columns allow you to star or flag records; these designations can also be used for faceting. The third column is an ID number for the row or record.
 
 An important feature is the dropdown menu for each column that you can access via the down arrows next to each column header.
 
-![Dropdown menu](http://amyehodge.github.io/OpenRefine/images/OR05.png "Dropdown menu")
+![Dropdown menu](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR05.png "Dropdown menu")
 
 We will get intimately familiar with these menu options shortly.  
 
@@ -136,7 +136,7 @@ If you want to perform operations on many or all the rows at one time, use the d
 
 Choose `Edit columns > Re-order / remove columns` to change the order in which the data columns are displayed. When you do this, you'll see the following pop-up window:
 
-![Bulk reordering and deleting](http://amyehodge.github.io/OpenRefine/images/OR06.png "Bulk reordering and deleting")
+![Bulk reordering and deleting](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR06.png "Bulk reordering and deleting")
 
 Drag column names up and down the panel on the left to reorder them, or drag them to the panel on the right to remove them.
 
@@ -148,13 +148,13 @@ One very useful feature of OpenRefine is the project history. OpenRefine tracks 
 
 To access the history, click on the `Undo/Redo` tab at the top of the panel on the left side of your screen:
 
-![Project history](http://amyehodge.github.io/OpenRefine/images/OR07b.jpg "Project history")
+![Project history](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR07b.jpg "Project history")
 
 You should see listed all the transformations you have done on your data so far. Note that activities that only change your view of things -- like collapsing columns or changing the number of rows on a page -- are not recorded in the history. This means you may have to reset these options when you close a project and re-open it.
 
 If you decide that you would like to undo your data transformations so that only the first step (in this case, renaming the registration number column) has been done, all you have to do is click on that step and all subsequent transformations will be undone.
 
-![Reverting](http://amyehodge.github.io/OpenRefine/images/OR08.png "Reverting")
+![Reverting](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR08.png "Reverting")
 
 You can go back and redo any of these "undone" transformations later as well by clicking on the appropriate greyed out step, **as long as you have not done any further new transformations of your data in the meantime.** OpenRefine can not store conflicting histories, so it opts to choose the most recent "branch" of your transformations. Once you undo steps and then create new steps, the previously undone steps are removed from the history.
 
@@ -164,7 +164,7 @@ It is also possible to extract the history in a JSON format using the `Extract` 
 
 OpenRefine works on a copy of your data in memory -- NOT the original file. This means that you have a safe copy of your original data intact. It also means that once you are done transforming your data in OpenRefine, you'll need to export your project in order to be able to use the data. Click on the `Export` button on the top right of the window (between `Open...` and `Help`).
 
-![Exporting](http://amyehodge.github.io/OpenRefine/images/OR09.png "Exporting")
+![Exporting](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR09.png "Exporting")
 
 Many of the options here are likely to be the same as the original format(s) of the data you may have imported at the start of your project.
 
@@ -174,7 +174,7 @@ Many of the options here are likely to be the same as the original format(s) of 
 
 One thing you'll almost certainly want to do with your data at some point is to sort it. You can sort on any column by choosing the dropdown for the column you would like to sort and selecting `Sort...`.
 
-![Sort menu](http://amyehodge.github.io/OpenRefine/images/OR10.png "Sort menu")
+![Sort menu](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR10.png "Sort menu")
 
 There are several options for how to sort:  
 
@@ -202,19 +202,19 @@ In the Powerhouse Museum dataset we are using, the best field for faceting is th
 
 To facet on the **Categories** field (or any field), choose the dropdown menu for that column and select `Facet > Text facet`.
 
-![Text facet menu](http://amyehodge.github.io/OpenRefine/images/OR11.png "Text facet menu")
+![Text facet menu](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR11.png "Text facet menu")
 
 Results for the faceting will appear in the panel on the left side of the screen under the `Facet/Filter` tab. In this case, even though this column uses a controlled vocabulary, there are still too many choices to see.   
 
-![Too many facet choices](http://amyehodge.github.io/OpenRefine/images/OR12.png "Too many facet choices")
+![Too many facet choices](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR12.png "Too many facet choices")
 
 Select `Facet by choice counts` in the bottom of the window, so that you can restrict the facet to a subset that you can view. Choose the most popular ones by dragging the handle on the left to 1000 so that you are only viewing those terms assigned to at least 1000 items.  
 
-![Facet by choice counts](http://amyehodge.github.io/OpenRefine/images/OR13.png "Facet by choice counts")
+![Facet by choice counts](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR13.png "Facet by choice counts")
 
 To view the list in order of popularity, choose `Sort by count` from the menu at the top of the facet window. Note that some of these contain multiple terms separated by a `|` (pipe). These are called multi-valued cells. We will learn how to handle these better later.
 
-![Sort text facet by counts](http://amyehodge.github.io/OpenRefine/images/OR14.png "Sort text facet by counts")
+![Sort text facet by counts](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR14.png "Sort text facet by counts")
 
 #### <a name="numeric"></a> Numeric faceting   
 
@@ -222,7 +222,7 @@ Let's try numeric faceting on the **RecordID** field. From the dropdown menu in 
 
 Once you've converted the **RecordIDs** to numbers, you should see a range of values in the `Facet/Filter` tab in the panel on the left, similar to what we saw when restricting values for the text faceting.
 
-![Numeric facet](http://amyehodge.github.io/OpenRefine/images/OR15b.png "Numeric facet")
+![Numeric facet](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR15b.png "Numeric facet")
 
 Under the graph you will see that all the **RecordID**s have been classified as numeric, non-numeric, blank, or error. We would expect all of our **RecordID**s to be numeric, but one of them has been classified as blank. Let's have a look at that one to see what's going on with it.
 
@@ -230,7 +230,7 @@ Deselect the `Numeric` checkbox so that only the one item classified as `Blank' 
 
 We don't need this record in our data set, so let's remove it. Go to the dropdown  menu for the **All** column and select `Edit rows > Remove all matching rows` to delete this row.
 
-![Remove row](http://amyehodge.github.io/OpenRefine/images/OR38.png "Remove row")
+![Remove row](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR38.png "Remove row")
 
 Once you do this, you'll notice that the facets in the panel on the left are updated.
 
@@ -242,25 +242,25 @@ Let's say you are interested in identifying all the rows that have information a
 
 Your goal is easily achieved by using the star and flag facet option. Perform the first step the same as previously: `Edit cells > Customized facets > Facet by blank` for the **Diameter** column and choose `false`.
 
-![Diameter facet](http://amyehodge.github.io/OpenRefine/images/OR18.png "Diameter facet")
+![Diameter facet](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR18.png "Diameter facet")
 
 Then star these rows by selecting `All > Edit rows > Star rows`.
 
-![Diameter star](http://amyehodge.github.io/OpenRefine/images/OR19.png "Diameter star")
+![Diameter star](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR19.png "Diameter star")
 
 Clear the facet (click on the `x`) and then do the same faceting for the **Weight** column. Again, star all the results rows. Note that some of the rows are already starred because they also contain diameter information and so were starred in the first step.
 
-![Weight star](http://amyehodge.github.io/OpenRefine/images/OR20.png "Weight star")
+![Weight star](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR20.png "Weight star")
 
 Clear the facet again and then choose `All > Facet > Facet by star`. Now you have a list of those rows containing either diameter or weight information or both.
 
-![Diameter-weight](http://amyehodge.github.io/OpenRefine/images/OR21.png "Diameter-weight")
+![Diameter-weight](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR21.png "Diameter-weight")
 
 #### <a name="custom"></a> Custom faceting  
 
 It is also possible to define your own custom faceting parameters using the `Facet > Customized facets` option from the dropdown menu of any column.
 
-![Custom facet](http://amyehodge.github.io/OpenRefine/images/OR22.png "Custom facet")
+![Custom facet](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR22.png "Custom facet")
 
 For many custom faceting options you will need to understand how to use regular expressions and the General Refine Expression Language (GREL), which are beyond the scope of this lesson.
 
@@ -270,7 +270,7 @@ So far we have mostly been changing our view of the data. With cell transformati
 
 Choose the dropdown menu for any column and choose `Edit cells > Common transforms`. Here you will see a number of basic types of cell transformation. We will discuss some, but not all, of these options.
 
-![Transform menu](http://amyehodge.github.io/OpenRefine/images/OR23.png "Transform menu")
+![Transform menu](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR23.png "Transform menu")
 
 #### <a name="trim"></a> Trimming whitespace  
 
@@ -278,13 +278,13 @@ One error that frequently creeps into data is the existence of extra whitespace 
 
 In order to use this feature, select the dropdown menu from any column and choose `Edits cells > Common transforms > Trim leading and trailing whitespace`.  
 
-![Whitespace menu](http://amyehodge.github.io/OpenRefine/images/OR24.png "Whitespace menu")
+![Whitespace menu](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR24.png "Whitespace menu")
 
 #### <a name="case"></a> Case transformations  
 
 By using case transformations, we can convert text strings into all capital letters, all lowercase letters, or title case (where the first letter of each word is capitalized). To use one of these options, choose `Edit cells > Common transforms` and then either `To titlecase`, `To uppercase`, or `To lowercase`.  
 
-![Case transform menu](http://amyehodge.github.io/OpenRefine/images/OR25.png "Case transform menu")
+![Case transform menu](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR25.png "Case transform menu")
 
 Note that this only works on text fields. In addition, the titlecase conversion defines a word as "text preceded by a whitespace."   
 
@@ -294,13 +294,13 @@ Note that this only works on text fields. In addition, the titlecase conversion 
 
 The `Blank out cells` transform will convert all cells to blank cells, removing any content. This is probably not something that you want to do to an entire column in your dataset, but it can be useful in certain situations. To do this, choose `Edit cells > Common transforms > Blank out cells` from the dropdown menu of any column.  
 
-![Blank out cells](http://amyehodge.github.io/OpenRefine/images/OR26.png "Blank out cells")
+![Blank out cells](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR26.png "Blank out cells")
 
 ### <a name="remove"></a> Removing rows  
 
 You may run across entire rows of data that need to be removed from your dataset before you can begin your data analysis. You need to first have a filter or a facet in place before removing rows, otherwise you will remove all the rows in your dataset (don't worry, you can to the Undo/Redo tab to change it back!). Once your filter or facet is in place, select `All > Edit rows > Remove all matching rows`.
 
-![Remove rows](http://amyehodge.github.io/OpenRefine/images/OR27.png "Remove rows")
+![Remove rows](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR27.png "Remove rows")
 
 >**Task 3:** Remove all rows that lack a **RecordID** from your dataset. Note, you may have already done this earlier in the numeric faceting section.
 
@@ -314,23 +314,23 @@ If we are interested in seeing all the different categories there are in this fi
 
 To allow us to examine the individual categories, use the `Text facet` option from the **Categories** dropdown menu like we did earlier. Then from the **Categories** dropdown menu select `Edit cells > Split multi-valued cells`.
 
-![Split multi-valued](http://amyehodge.github.io/OpenRefine/images/OR28.png "Split multi-valued")
+![Split multi-valued](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR28.png "Split multi-valued")
 
 Be sure to indicate the correct separator, which in this case is `|`.   
 
-![Pipe separator](http://amyehodge.github.io/OpenRefine/images/OR29.png "Pipe separator")
+![Pipe separator](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR29.png "Pipe separator")
 
 The facet on the left now shows all the individual categories instead of the combinations. The default sorting for this is alphabetical, but we can change that to sort by count so that we can see which categories are the most prevalent.  
 
-![Separated categories](http://amyehodge.github.io/OpenRefine/images/OR30.png "Separated categories")  
+![Separated categories](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR30.png "Separated categories")  
 
 Now that we no longer have multi-valued fields, we have that ability to edit or update a category name across all records where it is used. If you hover over the name of a category in the panel on the left, the `Edit` button will appear. Clicking that will let you edit the name of the category across all instances.
 
-![Editing categories](http://amyehodge.github.io/OpenRefine/images/OR31.png "Editing categories")  
+![Editing categories](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR31.png "Editing categories")  
 
 Note that when you split multi-valued cells, you create extra rows in your dataset that contain only the split-out data values. Change your view between rows and records to see the effect that now has.
 
-![Multi-valued category rows](http://amyehodge.github.io/OpenRefine/images/OR32.png "Multi-valued category rows")  
+![Multi-valued category rows](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR32.png "Multi-valued category rows")  
 
 Once you are done editing you can revert back to the multi-valued cells by choosing `Edit cells > Join multi-valued cells` from the dropdown menu in the **Categories** column.
 
@@ -342,7 +342,7 @@ Clustering helps you to find items that are the same but have slightly different
 
 In a previous example we split the multi-valued cells in the **Categories** column. Once you've done that, you can choose `Edit cells > Cluster and edit...` from the **Categories** column drop-down menu. (Or just click the `Cluster` button at the top right of the facet box in the left panel.) There are a number of clustering methods and keying functions that can be selected. We'll stick with the default method of `key collision` and the default keying function of `fingerprint`.  
 
-![Default clustering](http://amyehodge.github.io/OpenRefine/images/OR33.png "Default clustering")
+![Default clustering](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR33.png "Default clustering")
 
 Once OpenRefine has performed the clustering, it will list the clusters in rows along with the number of rows in the cluster, the spelling and number of each variation found, and a suggestion for what the value for the entire cluster should be.  
 
@@ -354,7 +354,7 @@ If no new clusters are identified, you can choose other clustering algorithms to
 
 Once you have finished evaluating all the clusters, check back on your category facets to see that the inconsistencies in the data have disappeared and that you now have a much cleaner list. It is difficult to predict which clustering algorithm will work best on your data, so you should try several to make sure you've found all the clusters that belong together.  
 
-![Categories after clustering](http://amyehodge.github.io/OpenRefine/images/OR34.png "Categories after clustering")  
+![Categories after clustering](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR34.png "Categories after clustering")  
 
 Once you are done clustering, close the facet and change the `Categories` column back to multi-valued cells (see [Handling multi-valued cells](#multi))  
 
@@ -364,15 +364,15 @@ When we had multiple values in our **Categories** column, we split these into se
 
 For example, the **Provenance (Production)** column contains information about designers, makers, and other things. It might be better if we could split this information into separate columns so that we can analyze it separately.
 
-![Provenance (Production)](http://amyehodge.github.io/OpenRefine/images/OR35.png "Provenance (Production)")
+![Provenance (Production)](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR35.png "Provenance (Production)")
 
 To do this, go to the dropdown menu for the **Provenance (Production)** column and choose `Edit column > Split into several columns...`. You can then choose what the separator to use for splitting the content (we will use a pipe) or whether to use fixed lengths. Fixed lengths can be useful if the content does not contain any separators. However, to use fixed lengths, each part of the content must be the same length, like multiple dates in a row. You can also choose to allow OpenRefine to guess what the cell types should be once they are split, and whether or not to retain the original row once the cells have been split or to remove it.
 
-![Splitting options](http://amyehodge.github.io/OpenRefine/images/OR36.png "Splitting options")
+![Splitting options](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR36.png "Splitting options")
 
 When you do this for the **Provenance (Production)** column you will see that multiple columns are created.
 
-![Split data](http://amyehodge.github.io/OpenRefine/images/OR37.png "Split data")
+![Split data](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR37.png "Split data")
 
 These columns are titled **Provenance (Production) 1**, **Provenance (Production) 2**, etc. You can rename these columns if you wish. OpenRefine will create the number of columns needed to split up all the content, unless you supply a maximum number. Not all cells will contain a value.
 
