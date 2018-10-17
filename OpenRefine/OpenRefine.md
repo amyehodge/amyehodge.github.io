@@ -74,7 +74,7 @@ First, download the dataset file from [https://stanford.box.com/OpenRefineDatase
 
 OpenRefine will then show you a preview of the dataset in the top half of the window:  
 
-![OpenRefine dataset preview](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/OpenRefine/images/OR02.png "OpenRefine dataset preview")
+![OpenRefine dataset preview](https://amyehodge.github.io/amyehodge.github.io/OpenRefine/images/OR02.png "OpenRefine dataset preview")
 
 ...and options for parsing the data on the bottom half of the window:  
 
