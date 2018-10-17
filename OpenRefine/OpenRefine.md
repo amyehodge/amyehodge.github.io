@@ -56,7 +56,7 @@ Once installed, OpenRefine will open in a window in your default browser, even t
 
 When you open the software you'll see a panel on the left with three options:
 
-![OpenRefine start-up page](http://amyehodge.github.io/OpenRefine/images/OR01.png "OpenRefine start-up page")  
+![OpenRefine start-up page](http://amyehodge.github.io/OpenRefine/OpenRefine/images/OR01.png "OpenRefine start-up page")  
 
 * `Create project`: Use this option to load a dataset into OpenRefine for the first time. You can import data from a file in a variety of formats or from other sources, including URLs.  
 * `Open project`: Use this option to open a project that you created and saved previously. If you click on this object you will see a list of available projects to choose from.  
